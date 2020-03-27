@@ -68,22 +68,32 @@
       height="45"
       characterLimit="1"
       characterValidation="Integer"
-      textAlignment="MiddleCenter"/>
+      textAlignment="MiddleCenter"
+      text="0"/>
 
     <!-- Defenses -->
     <!-- Need text for Guard, Toughness, Resolve -->
     <Text
       class="def"
-      width="111"
-      height="111"
-      textAlignment="MiddleCenter"/>
-    <!-- Need inputfield for def sources etc. -->
+      width="150"
+      height="125"
+      textAlignment="MiddleCenter"
+      text="10"/>
+    <!-- Need text for derived defenses -->
+    <Text
+      class="der_def"
+      width="70"
+      height="40"
+      textAlignment="MiddleCenter"
+      text="0"/>
+    <!-- Need inputfield for armour etc. -->
     <InputField
-      class="def_attr"
-      width="111"
-      height="111"
+      class="armour_other"
+      width="70"
+      height="52"
       characterValidation="Integer"
-      textAlignment="MiddleCenter"/>
+      textAlignment="MiddleCenter"
+      text="0"/>
 
     <!-- Hit Points -->
     <!-- Need text for Current, Max -->
@@ -241,6 +251,18 @@
     <InputField id="pro_score" class="score" position="-583 -1044 0"/>
     <Text id="pro_cost" class="cost_dice" position="-450 -1044 0" text="0"/>
     <Text id="pro_dice" class="cost_dice" position="-320 -1044 0" text="d20"/>
+
+    <!-- Defenses -->
+    <!-- Guard -->
+    <Text id="guard" class="def" position="-65 760 0"/>
+    <Text id="guard_agi" class="der_def" position="218 860" />
+    <Text id="guard_mig" class="der_def" position="218 815" />
+    <InputField id="guard_arm" class="armour_other" position="218 773" />
+    <InputField id="guard_other" class="armour_other" position="218 729" />
+    <!-- Toughness -->
+    <Text id="toughness" class="def" position="-65 465 0"/>
+    <!-- Resolve -->
+    <Text id="resolve" class="def" position="-65 160 0"/>
 
 
 </Panel>
