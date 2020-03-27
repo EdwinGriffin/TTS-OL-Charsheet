@@ -1,12 +1,12 @@
 <Defaults>
-<!-- Styling for the reset button -->
+    <!-- Styling for the reset button -->
     <Button
       fontStyle="Bold"
       horizontalOverflow="Wrap"
       resizeTextForBestFit="true"
       resizeTextMinSize="12"
       resizeTextMaxSize="200"/>
-<!-- This determines the styling for text boxes (classified as Input Fields). Colour is a key entry as it prevents the emissive in low light issue -->
+    <!-- This determines the styling for text boxes (classified as Input Fields). Colour is a key entry as it prevents the emissive in low light issue -->
     <InputField
       onEndEdit="updateField"
       colors="#FFFFFF00|#FFFFFF00|#FFFFFF00|#FFFFFF00"
@@ -16,14 +16,14 @@
       resizeTextForBestFit="true"
       resizeTextMinSize="12"
       resizeTextMaxSize="200"/>
-<!-- General text styling -->
+    <!-- General text styling -->
     <Text
       fontStyle="Bold"
       horizontalOverflow="Wrap"
       resizeTextForBestFit="true"
       resizeTextMinSize="12"
       resizeTextMaxSize="200"/>
-<!-- Styling for the lock button -->
+    <!-- Styling for the lock button -->
     <ToggleButton
       fontStyle="Bold"
       horizontalOverflow="Wrap"
