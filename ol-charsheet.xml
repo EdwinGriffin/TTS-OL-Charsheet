@@ -1,0 +1,255 @@
+<Defaults>
+    <!-- Styling for the reset button -->
+    <Button
+      fontStyle="Bold"
+      horizontalOverflow="Wrap"
+      resizeTextForBestFit="true"
+      resizeTextMinSize="12"
+      resizeTextMaxSize="200"/>
+
+    <!-- This determines the styling for input text boxes (classified as Input Fields). Colour is a key entry as it prevents the emissive in low light issue -->
+    <InputField
+      onEndEdit="updateField"
+      colors="#FFFFFF88|#FFFFFF88|#FFFFFF88|#FFFFFF88"
+      fontStyle="Bold"
+      horizontalOverflow="Wrap"
+      placeholder=" "
+      resizeTextForBestFit="true"
+      resizeTextMinSize="12"
+      resizeTextMaxSize="200"/>
+    
+    <!-- General text styling -->
+    <Text
+      fontStyle="Bold"
+      horizontalOverflow="Wrap"
+      resizeTextForBestFit="true"
+      resizeTextMinSize="12"
+      resizeTextMaxSize="200"/>
+    
+    <!-- Styling for the toggle buttons -->
+    <ToggleButton
+      fontStyle="Bold"
+      horizontalOverflow="Wrap"
+      resizeTextForBestFit="true"
+      resizeTextMinSize="12"
+      resizeTextMaxSize="200"/>
+
+    <!--Sheet-->
+    <Panel
+      class="sheet"
+      position="0 0 -20.1"
+      rotation="180 180 0"
+      scale="0.08235 0.08235"
+      width="1878"
+      height="2429"/>
+
+    <!--Basic Info-->
+    <InputField
+      class="basic"
+      height="60"
+      textAlignment="MiddleLeft"/>
+
+    <Text
+      class="basic"
+      height="60"
+      textAlignment="MiddleCenter"/>
+
+    <!--Attributes-->
+    <!-- Need text for cost & dice -->
+    <Text
+      class="cost_dice"
+      width="116"
+      height="45"
+      textAlignment="MiddleCenter"/>
+    <!-- Need inputfield for Score -->
+    <InputField
+      class="score"
+      width="116"
+      height="45"
+      characterLimit="1"
+      characterValidation="Integer"
+      textAlignment="MiddleCenter"/>
+
+    <!-- Defenses -->
+    <!-- Need text for Guard, Toughness, Resolve -->
+    <Text
+      class="def"
+      width="111"
+      height="111"
+      textAlignment="MiddleCenter"/>
+    <!-- Need inputfield for def sources etc. -->
+    <InputField
+      class="def_attr"
+      width="111"
+      height="111"
+      characterValidation="Integer"
+      textAlignment="MiddleCenter"/>
+
+    <!-- Hit Points -->
+    <!-- Need text for Current, Max -->
+    <Text
+      class="hp"
+      width="111"
+      height="111"
+      textAlignment="MiddleCenter"/>
+    <!-- Need inputfield for Other !!! Uses Def-Attr !!! -->
+
+    <!-- Secondary Attributes -->
+    <!-- Need inputfield for Damage, Lethal Damage, Wealth, Speed -->
+    <InputField
+      class="sec_attr"
+      width="111"
+      height="111"
+      characterValidation="Integer"
+      textAlignment="MiddleCenter"/>
+
+    <!-- Items -->
+    <!-- Need inputfield for Weapons, Equipment, Armour -->
+    <InputField
+      class="items"
+      width="111"
+      height="111"
+      textAlignment="MiddleLeft"/>
+
+    <!-- Feats -->
+    <!-- Need inputfield for feats -->
+    <InputField
+      class="feats"
+      width="111"
+      height="111"
+      textAlignment="MiddleLeft"/>
+    <!-- Need inputfield for perks, faws -->
+    <InputField
+      class="perk_flaw"
+      width="111"
+      height="111"
+      textAlignment="MiddleLeft"/>
+
+    <!-- Points -->
+    <!-- Text for attr-total, attr-spent, feat-total -->
+    <Text
+      class="points"
+      width="111"
+      height="111"
+      textAlignment="MiddleCenter"/>
+    <!-- inputfield for feat-spent -->
+    <InputField
+      class="feat_spent"
+      width="111"
+      height="111"
+      textAlignment="MiddleCenter"/>
+
+    <Image
+      class="lock"
+      position="0 0 -20.1"
+      rotation="180 180 0"
+      scale="0.08235 0.08235"
+      width="1878"
+      height="2429"
+      color="#FFFFFF00"/>
+</Defaults>
+
+
+<Panel id="CharSheet" class="sheet">
+
+    <Button
+      id="reset"
+      onClick="resetSheet"
+      position="-904 1184.5 0"
+      width="50"
+      height="40"
+      text="Reset"/>
+
+    <!-- Basic Info -->
+    <InputField id="char_name" class="basic" position="-446 1120 0" width="440"/>
+    <InputField id="archetype" class="basic" position="235 1120 0" width="352"/>
+    <InputField id="player" class="basic" position="-434 1060 0" width="419"/>
+    <Text id="level" class="basic" position="30 1063 0" width="100" text="?"/>
+    <InputField id="xp" class="basic" position="304 1060 0" width="217" characterValidation="Integer"/>
+    <InputField id="description" class="basic" position="157 1000 0" width="1336"/>
+    
+    <!-- Attributes -->
+    <!-- Agility -->
+    <InputField id="agil_score" class="score" position="-583 519 0"/>
+    <Text id="agi_cost" class="cost_dice" position="-450 519 0" text="0"/>
+    <Text id="agi_dice" class="cost_dice" position="-320 519 0" text="d20"/>
+    <!-- Fortitude -->
+    <InputField id="fort_score" class="score" position="-583 456 0"/>
+    <Text id="fort_cost" class="cost_dice" position="-450 456 0" text="0"/>
+    <Text id="fort_dice" class="cost_dice" position="-320 456 0" text="d20"/>
+    <!-- Might -->
+    <InputField id="mig_score" class="score" position="-583 393 0"/>
+    <Text id="mig_cost" class="cost_dice" position="-450 393 0" text="0"/>
+    <Text id="mig_dice" class="cost_dice" position="-320 393 0" text="d20"/>
+    <!-- Deception -->
+    <InputField id="dec_score" class="score" position="-583 160 0"/>
+    <Text id="dec_cost" class="cost_dice" position="-450 160 0" text="0"/>
+    <Text id="dec_dice" class="cost_dice" position="-320 160 0" text="d20"/>
+    <!-- Presence -->
+    <InputField id="presence_score" class="score" position="-583 97 0"/>
+    <Text id="presence_cost" class="cost_dice" position="-450 97 0" text="0"/>
+    <Text id="presence_dice" class="cost_dice" position="-320 97 0" text="d20"/>
+    <!-- Persuasion -->
+    <InputField id="pers_score" class="score" position="-583 34 0"/>
+    <Text id="pers_cost" class="cost_dice" position="-450 34 0" text="0"/>
+    <Text id="pers_dice" class="cost_dice" position="-320 34 0" text="d20"/>
+    <!-- Learning -->
+    <InputField id="ler_score" class="score" position="-583 -184 0"/>
+    <Text id="ler_cost" class="cost_dice" position="-450 -184 0" text="0"/>
+    <Text id="ler_dice" class="cost_dice" position="-320 -184 0" text="d20"/>
+    <!-- Logic -->
+    <InputField id="log_score" class="score" position="-583 -247 0"/>
+    <Text id="log_cost" class="cost_dice" position="-450 -247 0" text="0"/>
+    <Text id="log_dice" class="cost_dice" position="-320 -247 0" text="d20"/>
+    <!-- Perception -->
+    <InputField id="perc_score" class="score" position="-583 -310 0"/>
+    <Text id="perc_cost" class="cost_dice" position="-450 -310 0" text="0"/>
+    <Text id="perc_dice" class="cost_dice" position="-320 -310 0" text="d20"/>
+    <!-- Will -->
+    <InputField id="will_score" class="score" position="-583 -373 0"/>
+    <Text id="will_cost" class="cost_dice" position="-450 -373 0" text="0"/>
+    <Text id="will_dice" class="cost_dice" position="-320 -373 0" text="d20"/>
+    <!-- Alteration -->
+    <InputField id="alt_score" class="score" position="-583 -600 0"/>
+    <Text id="alt_cost" class="cost_dice" position="-450 -600 0" text="0"/>
+    <Text id="alt_dice" class="cost_dice" position="-320 -600 0" text="d20"/>
+    <!-- Creation -->
+    <InputField id="cre_score" class="score" position="-583 -663 0"/>
+    <Text id="cre_cost" class="cost_dice" position="-450 -663 0" text="0"/>
+    <Text id="cre_dice" class="cost_dice" position="-320 -663 0" text="d20"/>
+    <!-- Energy -->
+    <InputField id="ene_score" class="score" position="-583 -726 0"/>
+    <Text id="ene_cost" class="cost_dice" position="-450 -726 0" text="0"/>
+    <Text id="ene_dice" class="cost_dice" position="-320 -726 0" text="d20"/>
+    <!-- Entropy -->
+    <InputField id="ent_score" class="score" position="-583 -789 0"/>
+    <Text id="ent_cost" class="cost_dice" position="-450 -789 0" text="0"/>
+    <Text id="ent_dice" class="cost_dice" position="-320 -789 0" text="d20"/>
+    <!-- Influence -->
+    <InputField id="inf_score" class="score" position="-583 -853 0"/>
+    <Text id="inf_cost" class="cost_dice" position="-450 -853 0" text="0"/>
+    <Text id="inf_dice" class="cost_dice" position="-320 -853 0" text="d20"/>
+    <!-- Movement -->
+    <InputField id="mov_score" class="score" position="-583 -916 0"/>
+    <Text id="mov_cost" class="cost_dice" position="-450 -916 0" text="0"/>
+    <Text id="mov_dice" class="cost_dice" position="-320 -916 0" text="d20"/>
+    <!-- Prescience -->
+    <InputField id="prescience_score" class="score" position="-583 -979 0"/>
+    <Text id="prescience_cost" class="cost_dice" position="-450 -979 0" text="0"/>
+    <Text id="prescience_dice" class="cost_dice" position="-320 -979 0" text="d20"/>
+    <!-- Protection -->
+    <InputField id="pro_score" class="score" position="-583 -1044 0"/>
+    <Text id="pro_cost" class="cost_dice" position="-450 -1044 0" text="0"/>
+    <Text id="pro_dice" class="cost_dice" position="-320 -1044 0" text="d20"/>
+
+
+</Panel>
+<Image id="lock" class="lock">
+    <ToggleButton
+      id="LockToggle"
+      onValueChanged="updateLock"
+      position="909 1184.5 0"
+      width="50"
+      height="40"
+      text="Lock"/>
+</Image>

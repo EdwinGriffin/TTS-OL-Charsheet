@@ -1,0 +1,1028 @@
+<!-- include !/smart-character-sheet/ui -->
+<Defaults>
+  <Text class="locPlus"         text="+" />
+  <Text class="locMinus"        text="&#8722;" />
+  <Text class="locPlusHundred"  text="+00" />
+  <Text class="locMinusHundred" text="&#8722;00" />
+
+  <Text class="locSheetTitle"         text="Smart 5e Character Sheet" />
+
+  <InputField class="locNameHint"         placeholder="Name" />
+  <InputField class="locPlayerHint"       placeholder="Player" />
+  <Text       class="locPlayerLabel"      text="PLAYER" />
+  <Text       class="locAlignmentLabel"   text="ALIGNMENT" />
+  <InputField class="locRaceHint"         placeholder="Race" />
+  <Text       class="locRaceLabel"        text="RACE" />
+  <InputField class="locClassHint"        placeholder="Class" />
+  <Text       class="locClassLabel"       text="CLASS" />
+  <InputField class="locBackgroundHint"   placeholder="Background" />
+  <Text       class="locBackgroundLabel"  text="BACKGROUND" />
+  <Text       class="locExperienceLabel"  text="EXPERIENCE" />
+  <Text       class="locToNextLevelLabel" text="TO NEXT LEVEL" />
+  <Text       class="locLevelLabel"       text="LEVEL" />
+  <Text       class="locNextLevelLabel"   text="NEXT LEVEL" />
+
+  <Text class="locAbilities"                   text="ABILITIES" />
+  <Text class="locInspiration"                 text="INSPIRATION" />
+  <Text class="locProficiencyBonus"            text="PROFICIENCY BONUS" />
+  <Text class="locSavingThrows"                text="SAVING THROWS" />
+  <Text class="locSkills"                      text="SKILLS" />
+  <Text class="locPassivePerception"           text="PASSIVE WISDOM (PERCEPTION)" />
+  <Text class="locProficienciesLanguagesNotes" text="PROFICIENCIES, LANGUAGES, &amp; NOTES" />
+
+  <Text       class="locArmorClass"         text="ARMOR CLASS" />
+  <Text       class="locInitiative"         text="INITIATIVE" />
+  <Text       class="locSpeed"              text="SPEED" />
+  <InputField class="locSpeed"              suffix="ft" />
+  <Text       class="locExhaustion"         text="EXHAUSTION" />
+
+
+  <Text       class="locSpellcasting"       text="SPELLCASTING" />
+  <Text       class="locSpellcastingAbilty" text="SPELLCASTING ABILITY" />
+  <Text       class="locSpellAttackBonus"   text="ATK BONUS" />
+  <Text       class="locSpellSaveDc"        text="SAVE DC" />
+  <Text       class="locHitDice"            text="HIT DICE" />
+  <Text       class="locHitDiceTotalLabel"  text="TOTAL" />
+  <InputField class="locHitDiceTotalHint"   placeholder="Total" />
+
+  <Text       class="locDeathSaves"         text="DEATH SAVES" />
+  <Text       class="locDeathSaveSuccesses" text="SUCCESSES" />
+  <Text       class="locDeathSaveFailures"  text="FAILURES" />
+  <Text       class="locTempHp"             text="TEMP HP" />
+  <Text       class="locCurrentHp"          text="CURRENT HP" />
+  <Text       class="locMaxHp"              text="MAX HP" />
+
+  <Text class="locAttacks"           text="ATTACKS" />
+  <Text class="locAttackNameLabel"   text="NAME" />
+  <Text class="locAttackBonusLabel"  text="BONUS" />
+  <Text class="locAttackDamageLabel" text="DAMAGE" />
+  <Text class="locAttackNotesLabel"  text="NOTES" />
+
+  <Text class="locFeaturesTraits"    text="FEATURES &amp; TRAITS" />
+  <Text class="locTraitDescription"  placeholder="Trait description" />
+
+  <Text class="locOptions"       text="OPTIONS" />
+  <Text class="locCopyToJson"    text="Copy data to JSON" />
+  <Text class="locPasteFromJson" text="Paste data from JSON" />
+  <Text class="locJson"          text="JSON" />
+  <Text class="locJsonDone"      text="Done" />
+</Defaults>
+
+<!-- include !/basis -->
+<Defaults>
+  <!--Colors-->
+    <Color name="clear"             color="rgba(0   , 0   , 0   , 0   )" />
+    <Color name="black"             color="rgba(0.2 , 0.2 , 0.2 , 1   )" />
+    <Color name="white"             color="rgba(1   , 1   , 1   , 1   )" />
+    <Color name="shadedClear"       color="rgba(0.2 , 0.2 , 0.2 , 0.4 )" />
+    <Color name="doubleShadedClear" color="rgba(0.2 , 0.2 , 0.2 , 0.64)" />
+    <Color name="shadedWhite"       color="rgba(0.8 , 0.8 , 0.8 , 1   )" />
+    <Color name="highlight"         color="rgba(0.65, 0.8 , 1   , 1   )" />
+  <!--/Colors-->
+
+  <!--Panel-->
+  <Panel class="box"    color="white" outline="black" outlineSize="1" />
+  <Panel class="pane"   color="white" />
+  <Panel class="shaded" color="shadedClear" />
+
+  <Panel class="separator"
+    preferredWidth="1"
+    preferredHeight="1"
+  />
+  
+  <Panel class="stretch"       flexibleWidth="1" flexibleHeight="1" />
+  <Panel class="stretchWidth"  flexibleWidth="1"                    />
+  <Panel class="stretchHeight"                   flexibleHeight="1" />
+  <!--/Panel-->
+
+  <!--VerticalLayout-->
+    <VerticalLayout
+      childForceExpandWidth="false"
+      childForceExpandHeight="false"
+      flexibleWidth="0"
+      flexibleHeight="0"
+    />
+
+    <VerticalLayout class="box"    color="white" outline="black" outlineSize="1" />
+    <VerticalLayout class="pane"   color="white" />
+    <VerticalLayout class="shaded" color="shadedClear" />
+
+    <VerticalLayout class="stretch"       flexibleWidth="1" flexibleHeight="1" />
+    <VerticalLayout class="stretchWidth"  flexibleWidth="1"                    />
+    <VerticalLayout class="stretchHeight"                   flexibleHeight="1" />
+
+    <VerticalLayout class="pad"             padding="4"       />
+    <VerticalLayout class="doublePad"       padding="8"       />
+    <VerticalLayout class="unpad"           padding="-4"      />
+    <VerticalLayout class="padHeight"       padding="0 0 4 4" />
+    <VerticalLayout class="padWidth"        padding="4 4 0 0" />
+    <VerticalLayout class="padAllButTop"    padding="4 4 0 4" />
+    <VerticalLayout class="padAllButBottom" padding="4 4 4 0" />
+  <!--/VerticalLayout-->
+  
+  <!--HorizontalLayout-->
+    <HorizontalLayout
+      childForceExpandWidth="false"
+      childForceExpandHeight="false"
+      flexibleWidth="0"
+      flexibleHeight="0"
+    />
+    
+    <HorizontalLayout class="box"    color="white" outline="black" outlineSize="1" />
+    <HorizontalLayout class="pane"   color="white" />
+    <HorizontalLayout class="shaded" color="shadedClear" />
+    
+    <HorizontalLayout class="stretch"       flexibleWidth="1" flexibleHeight="1" />
+    <HorizontalLayout class="stretchWidth"  flexibleWidth="1"                    />
+    <HorizontalLayout class="stretchHeight"                   flexibleHeight="1" />
+
+    <HorizontalLayout class="pad"             padding="4"       />
+    <HorizontalLayout class="doublePad"       padding="8"       />
+    <HorizontalLayout class="unpad"           padding="-4"      />
+    <HorizontalLayout class="padHeight"       padding="0 0 4 4" />
+    <HorizontalLayout class="padWidth"        padding="4 4 0 0" />
+    <HorizontalLayout class="padAllButTop"    padding="4 4 0 4" />
+    <HorizontalLayout class="padAllButBottom" padding="4 4 4 0" />
+  <!--/HorizontalLayout-->
+
+  <!--VerticalScrollView-->
+    <VerticalScrollView
+      flexibleWidth="0"
+      flexibleHeight="0"
+      image=""
+      maskImage=""
+      scrollbarImage=""
+      scrollbarBackgroundImage=""
+      verticalScrollbarWidth="16"
+      scrollbarColors="shadedClear|shadedClear|shadedClear|shadedClear"
+      scrollbarBackgroundColor=""
+      transition="None"
+    />
+    
+    <VerticalScrollView class="box"    color="white" outline="black" outlineSize="1" />
+    <VerticalScrollView class="pane"   color="white" />
+    <VerticalScrollView class="shaded" color="shadedClear" />
+    
+    <VerticalScrollView class="stretch"       flexibleWidth="1" flexibleHeight="1" />
+    <VerticalScrollView class="stretchWidth"  flexibleWidth="1"                    />
+    <VerticalScrollView class="stretchHeight"                   flexibleHeight="1" />
+  <!--/VerticalScrollView-->
+
+  <!--Text-->
+    <Text
+      color="black"
+      fontSize="16"
+    />
+
+    <Text class="relief" color="white" fontStyle="bold" />
+
+    <Text class="stretch"       flexibleWidth="1" flexibleHeight="1" />
+    <Text class="stretchWidth"  flexibleWidth="1"                    />
+    <Text class="stretchHeight"                   flexibleHeight="1" />
+  <!--/Text-->
+
+  <!--Button-->
+    <Button
+      fontSize="16"
+      preferredHeight="17"
+      fontStyle="normal"
+      textColor="black"
+      color="clear"
+      padding="0 0 0 0"
+      image=""
+      transition="None"
+      hoverClass="hover"
+      pressClass="press"
+      selectClass="select"
+    />
+
+    <Button                color="clear"       />
+    <Button class="hover"  color="shadedClear" />
+    <Button class="press"  color="highlight"   />
+    <Button class="select" color="shadedClear" />
+
+    <Button class="box"
+      outline="black"
+      outlineSize="1"
+      hoverClass="boxHover"
+      pressClass="boxPress"
+      selectClass="boxSelect"
+    />
+
+    <Button class="box"       color="white"       />
+    <Button class="boxHover"  color="shadedWhite" />
+    <Button class="boxPress"  color="highlight"   />
+    <Button class="boxSelect" color="shadedWhite" />
+
+    <Button class="shaded"
+      hoverClass="shadedHover"
+      pressClass="shadedPress"
+      selectClass="shadedSelect"
+    />
+
+    <Button class="shaded"       color="shadedClear"       />
+    <Button class="shadedHover"  color="doubleShadedClear" />
+    <Button class="shadedPress"  color="highlight"         />
+    <Button class="shadedSelect" color="doubleShadedClear" />
+
+    <Button class="pane"
+      hoverClass="paneHover"
+      pressClass="panePress"
+      selectClass="paneSelect"
+    />
+
+    <Button class="pane"       color="white"       />
+    <Button class="paneHover"  color="shadedWhite" />
+    <Button class="panePress"  color="highlight"   />
+    <Button class="paneSelect" color="shadedWhite" />
+
+    <Button class="disabled"
+      hoverClass="disabledHover"
+      pressClass="disabledPress"
+      selectClass="disabledSelect"
+    />
+
+    <Button class="disabled"       color="white" />
+    <Button class="disabledHover"  color="white" />
+    <Button class="disabledPress"  color="white" />
+    <Button class="disabledSelect" color="white" />
+
+    <Button class="stretch"       flexibleWidth="1" flexibleHeight="1" />
+    <Button class="stretchWidth"  flexibleWidth="1"                    />
+    <Button class="stretchHeight"                   flexibleHeight="1" />
+
+    <Button class="pad"             padding="4"       />
+    <Button class="doublePad"       padding="8"       />
+    <Button class="unpad"           padding="-4"      />
+    <Button class="padHeight"       padding="0 0 4 4" />
+    <Button class="padWidth"        padding="4 4 0 0" />
+    <Button class="padAllButTop"    padding="4 4 0 4" />
+    <Button class="padAllButBottom" padding="4 4 4 0" />
+  <!--/Button-->
+
+  <!--InputField-->
+    <InputField
+      fontSize="16"
+      placeholder=" "
+      textAlignment="upperLeft"
+      lineType="singleLine"
+      textOffset="0 0 0 0"
+      image=""
+      selectionColor="highlight"
+      hoverClass="hover"
+      pressClass="press"
+      selectClass="select"
+    />
+
+    <InputField                color="clear"       />
+    <InputField class="hover"  color="shadedClear" />
+    <InputField class="press"  color="highlight"   />
+    <InputField class="select" color="shadedClear" />
+
+    <InputField class="box"
+      outline="black"
+      outlineSize="1"
+      hoverClass="boxHover"
+      pressClass="boxPress"
+      selectClass="boxSelect"
+    />
+
+    <InputField class="box"       color="white"       />
+    <InputField class="boxHover"  color="shadedWhite" />
+    <InputField class="boxPress"  color="highlight"   />
+    <InputField class="boxSelect" color="shadedWhite" />
+
+    <InputField class="shaded"
+      hoverClass="shadedHover"
+      pressClass="shadedPress"
+      selectClass="shadedSelect"
+    />
+
+    <InputField class="shaded"       color="shadedClear"       />
+    <InputField class="shadedHover"  color="doubleShadedClear" />
+    <InputField class="shadedPress"  color="highlight"         />
+    <InputField class="shadedSelect" color="doubleShadedClear" />
+
+    <InputField class="pane"
+      hoverClass="paneHover"
+      pressClass="panePress"
+      selectClass="paneSelect"
+    />
+
+    <InputField class="pane"       color="white"       />
+    <InputField class="paneHover"  color="shadedWhite" />
+    <InputField class="panePress"  color="highlight"   />
+    <InputField class="paneSelect" color="shadedWhite" />
+
+    <InputField class="relief" textColor="white" fontStyle="bold" />
+
+    <InputField class="stretch"       flexibleWidth="1" flexibleHeight="1" />
+    <InputField class="stretchWidth"  flexibleWidth="1"                    />
+    <InputField class="stretchHeight"                   flexibleHeight="1" />
+
+    <InputField class="pad"             padding="4"       />
+    <InputField class="doublePad"       padding="8"       />
+    <InputField class="unpad"           padding="-4"      />
+    <InputField class="padHeight"       padding="0 0 4 4" />
+    <InputField class="padWidth"        padding="4 4 0 0" />
+    <InputField class="padAllButTop"    padding="4 4 0 4" />
+    <InputField class="padAllButBottom" padding="4 4 4 0" />
+  <!--/InputField-->
+</Defaults>
+
+<!-- include !/basis -->
+
+<Defaults>
+  <Panel class="main"
+    scale="0.3 0.3"
+    width="690"
+    height="990"
+  />
+  <Panel class="front"
+    position="0 0 -24"
+  />
+  <Panel class="back"
+    position="0 0 24"
+    rotation="0 180 0"
+  />
+
+  <Panel class="bsv_scrollbar"
+    preferredWidth="16"
+    color="clear"
+  />
+  <Button class="bsv_scrollbarHandle"
+    color="shadedClear"
+    hoverClass="shadedHover"
+    pressClass="shadedPress"
+    selectClass="shadedSelect"
+  />
+
+  <Button class="nudge"
+    ignoreLayout="true"
+    sizeDelta="14 14"
+    rotation="0 0 -45"
+  />
+  <Text class="nudge>@Text"
+    ignoreLayout="true"
+    rotation="0 0 45"
+    alignment="middleCenter"
+  />
+
+  <InputField class="boxValue"
+    fontSize="32"
+    fontStyle="bold"
+    textAlignment="middleCenter"
+    textOffset="0 0 0 0"
+  />
+  <Text class="boxLabel"
+    flexibleWidth="1"
+    fontSize="10"
+    fontStyle="bold"
+  />
+  <Text class="subLabel"
+    fontSize="8"
+    minHeight="9"
+    alignment="lowerLeft"
+    horizontalOverflow="overflow"
+    color="#32323299"
+  />
+
+  <HorizontalLayout class="skillRow"
+    spacing="2"
+    childAlignment="lowerLeft"
+  />
+  <Row class="skillRow"
+    preferredHeight="18"
+  />
+  <Button class="skillRow:nudge"
+    sizeDelta="10 10"
+  />
+  <Text class="skillTotal"
+    minWidth="18"
+    alignment="middleRight"
+    fontStyle="bold"
+  />
+  <Button class="skillToggle"
+    preferredWidth="12"
+    preferredHeight="12"
+  />
+  <Text class="skillToggle>@Text"
+    ignoreLayout="true"
+    fontSize="14"
+  />
+
+  <InputField class="attackInput"
+    fontStyle="italic"
+    textOffset="2 2 2 2"
+  />
+  <VerticalLayout class="jsonWindow"
+    anchorMin="0.5 0.5"
+    anchorMax="0.5 0.5"
+    sizeDelta="400 400"
+    spacing="4"
+    showAnimation="Grow"
+    hideAnimation="Shrink"
+    animationDuration="0.125"
+  />
+  <InputField class="jsonInput"
+    fontSize="10"
+    lineType="multiLineNewLine"
+  />
+
+  <Button class="cornerToggle"
+    ignoreLayout="true"
+    anchorMin="0 0"
+    anchorMax="0 0"
+    offsetXY="4 4"
+    pivot="0 0"
+    sizeDelta="10 10"
+  />
+  <Text class="cornerToggle>@Text"
+    ignoreLayout="true"
+    alignment="middleCenter"
+    fontSize="10"
+  />
+</Defaults>
+
+<Snippets bindSkip="true">
+
+  <Snippet name="ability">
+    <VerticalLayout class="stretch box" padding="3 3 -4 4">
+      <VerticalLayout class="stretch pad box" childAlignment="middleCenter">
+        <Text class="boxLabel">{{label}}</Text>
+        <Text id="{{id}}Mod" class="stretch" fontSize="48" fontStyle="bold" alignment="middleCenter" />
+        <Panel ignoreLayout="true" anchorMin="0 0" anchorMax="1 0" offsetXY="0 -0.5" sizeDelta="0 22">
+          <Button id="{{id}}Minus" class="box nudge" anchorMin="0.25 0.5" anchorMax="0.25 0.5" bind="abilities.{{id}}" bindType="nudge" nudgeAmount="-1">
+            <Text class="locMinus" />
+          </Button>
+          <Button id="{{id}}Plus" class="box nudge" anchorMin="0.75 0.5" anchorMax="0.75 0.5" bind="abilities.{{id}}" bindType="nudge" nudgeAmount="1">
+            <Text class="locPlus" />
+          </Button>
+          <InputField id="{{id}}Score" class="box" anchorMin="0.25 0" anchorMax="0.75 1" sizeDelta="-14 0" fontStyle="bold" textAlignment="middleCenter" characterLimit="2" bind="abilities.{{id}}" bindType="field" min="0" max="99" />
+        </Panel>
+      </VerticalLayout>
+    </VerticalLayout>
+  </Snippet>
+
+  <Snippet name="throw">
+    <HorizontalLayout class="stretchWidth skillRow">
+      <HorizontalLayout id="{{id}}ThrowAuto" class="stretchHeight" spacing="2" childAlignment="middleCenter">
+        <Button id="{{id}}ThrowProficiency" class="box skillToggle" onClick="onThrowProficiencyClick">
+          <Text id="{{id}}ThrowProficiencyText" />
+        </Button>
+        <Text id="{{id}}ThrowTotal" class="skillTotal" />
+      </HorizontalLayout>
+      <VerticalLayout id="{{id}}ThrowManual" class="stretchHeight" minWidth="32" padding="0 9 0 0" active="false">
+        <InputField id="{{id}}ThrowMod" class="stretch" textOffset="2 2 0 0" fontStyle="bold" textAlignment="middleRight" bind="throws.{{id}}.mod" bindType="field" characterLimit="3" prependPlus="true" />
+        <Button id="{{id}}ThrowModMinus" class="box nudge locMinus" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-4.5 0" bind="throws.{{id}}.mod" bindType="nudge" nudgeAmount="-1">
+          <Text class="locMinus" />
+        </Button>
+        <Button id="{{id}}ThrowModPlus" class="box nudge locPlus" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="-4.5 0" bind="throws.{{id}}.mod" bindType="nudge" nudgeAmount="1">
+          <Text class="locPlus" />
+        </Button>
+      </VerticalLayout>
+      <Text>{{label}}</Text>
+    </HorizontalLayout>
+  </Snippet>
+
+  <Snippet name="skill">
+    <HorizontalLayout class="stretchWidth skillRow">
+      <HorizontalLayout id="{{id}}Auto" class="stretchHeight" spacing="2" childAlignment="middleCenter">
+        <Button id="{{id}}Proficiency" class="box skillToggle" onClick="onSkillProficiencyClick">
+          <Text id="{{id}}ProficiencyText" />
+        </Button>
+        <Text id="{{id}}Total" class="skillTotal" />
+      </HorizontalLayout>
+      <VerticalLayout id="{{id}}Manual" class="stretchHeight" minWidth="32" padding="0 9 0 0" active="false">
+        <InputField id="{{id}}Mod" class="stretch" textOffset="2 2 0 0" fontStyle="bold" textAlignment="middleRight" bind="skills.{{id}}.mod" bindType="field" characterLimit="3" prependPlus="true" />
+        <Button id="{{id}}ModMinus" class="box nudge" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-4.5 0" bind="skills.{{id}}.mod" bindType="nudge" nudgeAmount="-1">
+          <Text class="locMinus" />
+        </Button>
+        <Button id="{{id}}ModPlus" class="box nudge" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="-4.5 0" bind="skills.{{id}}.mod" bindType="nudge" nudgeAmount="1">
+          <Text class="locPlus" />
+        </Button>
+      </VerticalLayout>
+      <Text>{{label}}</Text>
+      <Text class="subLabel">({{ability}})</Text>
+    </HorizontalLayout>
+  </Snippet>
+
+  <Snippet name="attack">
+    <HorizontalLayout class="stretch" spacing="4">
+      <VerticalLayout class="stretchWidth" padding="0 0 4 0" preferredWidth="0">
+        <HorizontalLayout class="stretch" spacing="4">
+          <VerticalLayout class="stretch">
+            <Text class="subLabel locAttackNameLabel" />
+            <InputField id="attack{{i}}Name" class="stretch shaded attackInput" bind="attacks.{{i}}.name" bindType="field" />
+          </VerticalLayout>
+          <VerticalLayout>
+            <Text class="subLabel locAttackBonusLabel" />
+            <InputField id="attack{{i}}Bonus" class="stretch shaded attackInput" textAlignment="upperCenter" bind="attacks.{{i}}.bonus" bindType="field" characterLimit="2" prependPlus="true" />
+          </VerticalLayout>
+          <VerticalLayout class="stretch">
+            <Text class="subLabel locAttackDamageLabel" />
+            <InputField id="attack{{i}}Damage" class="stretch shaded attackInput" bind="attacks.{{i}}.damage" bindType="field" />
+          </VerticalLayout>
+        </HorizontalLayout>
+        <VerticalLayout class="stretch">
+          <Text class="subLabel locAttackNotesLabel" />
+          <InputField id="attack{{i}}Notes" class="stretch shaded attackInput" lineType="multiLineNewLine" bind="attacks.{{i}}.notes" bindType="field" />
+        </VerticalLayout>
+      </VerticalLayout>
+      <VerticalLayout class="stretchHeight" preferredWidth="16" spacing="4">
+        <VerticalLayout class="stretchWidth" preferredHeight="9">
+          <Button id="attack{{i}}Swap" class="stretch shaded" onClick="onAttackSwapClick" active="{{swapActive}}">
+          <Text class="relief" fontSize="6" text="&#9660;&#9650;" /><!--up and down triangles-->
+        </Button>
+        </VerticalLayout>
+        <Button id="attack{{i}}Delete" class="stretch shaded" onClick="onAttackDeleteClick">
+          <Text class="relief locMinus" />
+        </Button>
+      </VerticalLayout>
+    </HorizontalLayout>
+  </Snippet>
+
+  <Snippet name="trait">
+    <Button id="trait{{i}}" class="stretchWidth shaded" preferredHeight="20" onClick="onTraitClick">
+      <Text id="trait{{i}}Text" class="relief" fontSize="12" />
+    </Button>
+  </Snippet>
+
+</Snippets>
+
+<Panel id="front" class="main front">
+  <VerticalLayout class="shaded" padding="8 8 4 4" anchorMin="0 1" anchorMax="1 1" offsetXY="0 16" sizeDelta="-32 64" pivot="0.5 1">
+    <Text class="relief locSheetTitle" outline="black" outlineSize="2 2" fontSize="24" fontStyle="boldAndItalic" />
+  </VerticalLayout>
+  <VerticalLayout class="stretchWidth" spacing="8">
+    <Panel id="frontLayoutHack" ignoreLayout="true" active="false" />
+    <HorizontalLayout class="stretchWidth">
+      <VerticalLayout class="stretch" childAlignment="middleCenter">
+        <HorizontalLayout class="stretchWidth pad" childAlignment="lowerRight" spacing="4">
+          <Text class="subLabel locPlayerLabel" />
+          <InputField id="player" class="locPlayerHint" minWidth="18" textAlignment="upperCenter" bind="player" bindType="field" />
+        </HorizontalLayout>
+        <VerticalLayout class="stretchWidth padHeight box">
+          <VerticalLayout class="stretch box">
+            <InputField id="name" class="stretch locNameHint" fontSize="32" fontStyle="bold" textOffset="4 4 4 4" bind="name" bindType="field" />
+          </VerticalLayout>
+        </VerticalLayout>
+      </VerticalLayout>
+      <VerticalLayout class="padWidth box">
+        <HorizontalLayout class="stretchHeight box" padding="4 4 4 4" spacing="8">
+          <VerticalLayout class="stretchHeight" minWidth="128" spacing="4">
+            <VerticalLayout class="stretchWidth">
+              <HorizontalLayout class="stretchWidth">
+                <Button id="alignmentLawful" class="stretchWidth" onClick="onAlignmentClick">
+                  <Text id="alignmentLawfulText" alignment="upperLeft" />
+                </Button>
+                <Button id="alignmentGood" class="stretchWidth" onClick="onAlignmentClick">
+                  <Text id="alignmentGoodText" alignment="upperLeft" />
+                </Button>
+              </HorizontalLayout>
+              <Panel class="stretchWidth shaded separator" />
+              <Text class="subLabel locAlignmentLabel" />
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth">
+              <InputField id="race" class="stretchWidth locRaceHint" bind="race" bindType="field" />
+              <Panel class="stretchWidth shaded separator" />
+              <Text class="subLabel locRaceLabel" />
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth">
+              <InputField id="class" class="stretchWidth locClassHint" bind="class" bindType="field" />
+              <Panel class="stretchWidth shaded separator" />
+              <Text class="subLabel locClassLabel" />
+            </VerticalLayout>
+          </VerticalLayout>
+          <VerticalLayout class="stretchHeight" minWidth="128" spacing="4">
+            <VerticalLayout class="stretchWidth">
+              <InputField id="background" class="stretchWidth locBackgroundHint" bind="background" bindType="field" />
+              <Panel class="stretchWidth shaded separator" />
+              <Text class="subLabel locBackgroundLabel" />
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth">
+              <HorizontalLayout class="stretchWidth" spacing="4" padding="24 24 0 0">
+                <Button id="expBigMinus" class="shaded nudge" anchorMin="0 0.5" anchorMax="0 0.5" sizeDelta="10 10" offsetXY="4 4" bind="exp" bindType="nudge" nudgeAmount="-100">
+                  <Text class="relief locMinusHundred" fontSize="5" />
+                </Button>
+                <Button id="expMinus" class="shaded nudge" anchorMin="0 0.5" anchorMax="0 0.5" sizeDelta="10 10" offsetXY="16 0" bind="exp" bindType="nudge" nudgeAmount="-1">
+                  <Text class="relief locMinus" fontSize="10" />
+                </Button>
+                <InputField id="exp" class="stretchWidth" fontSize="16" textAlignment="upperRight" characterLimit="6" bind="exp" bindType="field" />
+                <Text alignment="upperRight" fontSize="16" text="/" />
+                <Text id="expToNextLevel" fontSize="16" alignment="upperRight" />
+                <Button id="expPlus" class="shaded nudge" anchorMin="1 0.5" anchorMax="1 0.5" sizeDelta="10 10" offsetXY="-16 0" bind="exp" bindType="nudge" nudgeAmount="1">
+                  <Text class="relief locPlus" fontSize="10" />
+                </Button>
+                <Button id="expBigPlus" class="shaded nudge" anchorMin="1 0.5" anchorMax="1 0.5" sizeDelta="10 10" offsetXY="-4 4" bind="exp" bindType="nudge" nudgeAmount="100">
+                  <Text class="relief locPlusHundred" fontSize="5" />
+                </Button>
+              </HorizontalLayout>
+              <Panel class="stretchWidth shaded separator" />
+              <HorizontalLayout class="stretchWidth">
+                <Text class="stretchWidth subLabel locExperienceLabel" />
+                <Text class="stretchWidth subLabel locToNextLevelLabel" alignment="lowerRight" />
+              </HorizontalLayout>
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth">
+              <HorizontalLayout class="stretchWidth" spacing="2" padding="16 16 0 0" childAlignment="middleCenter">
+                <Button id="levelMinus" class="shaded nudge" anchorMin="0 0.5" anchorMax="0 0.5" sizeDelta="12 12" offsetXY="6 0" onClick="onLevelNudgeClick">
+                  <Text class="relief locMinus" fontSize="12" />
+                </Button>
+                <Text id="currentLevel" alignment="upperCenter" />
+                <Panel class="stretchWidth shaded" preferredHeight="12">
+                  <Panel id="expBar" class="shaded" anchorMin="0 0" />
+                </Panel>
+                <Text id="nextLevel" alignment="upperCenter" />
+                <Button id="levelPlus" class="shaded nudge" anchorMin="1 0.5" anchorMax="1 0.5" sizeDelta="12 12" offsetXY="-6 0" onClick="onLevelNudgeClick">
+                  <Text class="relief locPlus" fontSize="12" />
+                </Button>
+              </HorizontalLayout>
+              <Panel class="stretchWidth shaded separator" />
+              <HorizontalLayout class="stretchWidth">
+                <Text class="stretchWidth subLabel locLevelLabel" />
+                <Text class="stretchWidth subLabel locNextLevelLabel" alignment="lowerRight" />
+              </HorizontalLayout>
+            </VerticalLayout>
+          </VerticalLayout>
+        </HorizontalLayout>
+      </VerticalLayout>
+    </HorizontalLayout>
+    <HorizontalLayout class="stretch" spacing="8">
+      <VerticalLayout class="stretchHeight" spacing="8">
+        <HorizontalLayout spacing="8">
+          <VerticalLayout class="stretchHeight shaded">
+            <VerticalLayout id="abilitiesContainer" class="stretchHeight" padding="8 8 12 12" childAlignment="middleCenter" spacing="16" />
+            <VerticalLayout class="stretchWidth padAllButTop">
+              <Text class="boxLabel relief locAbilities" />
+            </VerticalLayout>
+          </VerticalLayout>
+          <VerticalLayout class="stretchHeight" spacing="8" childAlignment="middleCenter">
+            <VerticalLayout class="stretchWidth" preferredHeight="32" padding="36 0 0 0" childAlignment="middleCenter">
+              <VerticalLayout class="stretchWidth padHeight box">
+                <VerticalLayout class="stretch pad box">
+                  <Text class="boxLabel locInspiration" />
+                </VerticalLayout>
+              </VerticalLayout>
+              <Button id="inspiration" class="stretch box" ignoreLayout="true" anchorMin="0 0.5" anchorMax="0 0.5" sizeDelta="36 36" offsetXY="20 0" bind="inspiration" bindType="toggle">
+                <Text id="inspirationText" ignoreLayout="true" fontSize="36" />
+              </Button>
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth" preferredHeight="32" padding="36 0 0 0" childAlignment="middleCenter">
+              <VerticalLayout class="stretchWidth doublePad box">
+                <Text class="boxLabel locProficiencyBonus" />
+              </VerticalLayout>
+              <VerticalLayout class="box" ignoreLayout="true" rotation="0 0 22.5" anchorMin="0 0.5" anchorMax="0 0.5" sizeDelta="32 32" offsetXY="20 0">
+                <VerticalLayout class="stretch box" rotation="0 0 45">
+                  <VerticalLayout class="stretch box" rotation="0 0 -67.5">
+                    <VerticalLayout class="stretch box" rotation="0 0 45">
+                    <VerticalLayout class="stretch" rotation="0 0 -45">
+                      <InputField id="proficiencyBonus" class="stretch pane boxValue" fontSize="24" bind="proficiencyBonus" bindType="field" characterLimit="1" prependPlus="true" />
+                      <Button id="proficiencyBonusMinus" class="box nudge" sizeDelta="10 10" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-7.5 0" bind="proficiencyBonus" bindType="nudge" nudgeAmount="-1">
+                        <Text class="locMinus" />
+                      </Button>
+                      <Button id="proficiencyBonusPlus" class="box nudge" sizeDelta="10 10" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="7.5 0" bind="proficiencyBonus" bindType="nudge" nudgeAmount="1">
+                        <Text class="locPlus" />
+                      </Button>
+                    </VerticalLayout>
+                    </VerticalLayout>
+                  </VerticalLayout>
+                </VerticalLayout>
+              </VerticalLayout>
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth padWidth box">
+              <VerticalLayout class="stretchWidth pad box" padding="4 4 2 4" spacing="4">
+                <VerticalLayout id="throwsContainer" class="stretchWidth" spacing="2" />
+                <Text class="boxLabel locSavingThrows" />
+                <Button id="throwsManualButton" class="stretch box cornerToggle" onClick="onThrowsManualButtonClick">
+                  <Text id="throwsManualButtonText" />
+                </Button>
+              </VerticalLayout>
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth padWidth box">
+              <VerticalLayout class="stretchWidth box" padding="4 4 2 4" spacing="4">
+                <VerticalLayout id="skillsContainer" spacing="2" />
+                <Text class="boxLabel locSkills" />
+                <Button id="skillsManualButton" class="stretch box cornerToggle" onClick="onSkillsManualButtonClick">
+                  <Text id="skillsManualButtonText" />
+                </Button>
+              </VerticalLayout>
+            </VerticalLayout>
+          </VerticalLayout>
+        </HorizontalLayout>
+        <VerticalLayout class="stretchWidth" preferredHeight="32" padding="32 0 0 0" childAlignment="middleCenter">
+          <VerticalLayout class="stretchWidth doublePad box">
+            <Text class="boxLabel locPassivePerception" />
+          </VerticalLayout>
+          <VerticalLayout class="box" ignoreLayout="true" rotation="0 0 22.5" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="16 0" sizeDelta="17 40" outlineSize="0 1">
+            <VerticalLayout class="stretch box" rotation="0 0 45" outlineSize="0 1">
+              <VerticalLayout class="stretch box" rotation="0 0 45" outlineSize="0 1">
+                <Panel class="stretch box" rotation="0 0 45" outlineSize="0 1">
+                  <Text id="passivePerception" rotation="0 0 -157.5" sizeDelta="40 40" fontSize="24" fontStyle="bold" />
+                </Panel>
+              </VerticalLayout>
+            </VerticalLayout>
+          </VerticalLayout>
+        </VerticalLayout>
+        <VerticalLayout class="stretch pad box">
+          <VerticalScrollView id="notesScrollView" class="stretch" verticalScrollbarSpacing="4" doMinContentHeight="true" scrollSensitivity="16">
+            <InputField id="notes" class="stretch" fontSize="12" textOffset="4 4 4 4" lineType="multiLineNewLine" bind="notes" bindType="field" />
+          </VerticalScrollView>
+          <Text class="boxLabel locProficienciesLanguagesNotes" />
+        </VerticalLayout>
+      </VerticalLayout>
+      <VerticalLayout class="stretch" preferredWidth="0" spacing="8">
+        <HorizontalLayout id="statusContainer" class="doublePad stretchWidth shaded" spacing="8">
+          <VerticalLayout class="stretch" spacing="8">
+            <HorizontalLayout class="stretchWidth" spacing="8">
+              <VerticalLayout class="stretch">
+                <Panel class="box"  ignoreLayout="true" anchorMin="0 0" anchorMax="1 1" offsetMin="0 24"  offsetMax="0 -12" />
+                <Panel class="box"  ignoreLayout="true" anchorMin="0 0" anchorMax="1 0" offsetMin="23 0"  offsetMax="-23 8"                        outlineSize="0 1" />
+                <Panel class="box"  ignoreLayout="true" anchorMin="1 0" anchorMax="1 0" offsetXY="-23 23" sizeDelta="33.5 31.5" rotation="0 0 45"  outlineSize="0 1" />
+                <Panel class="box"  ignoreLayout="true" anchorMin="0 0" anchorMax="0 0" offsetXY="23 23"  sizeDelta="33.5 31.5" rotation="0 0 -45" outlineSize="0 1" />
+                <Panel class="box"  ignoreLayout="true" anchorMin="0 1" anchorMax="1 1" offsetMin="8 -16" offsetMax="-8 0" />
+                <Panel class="pane" ignoreLayout="true" anchorMin="0 0" anchorMax="1 1" offsetMin="0 24"  offsetMax="0 -12" />
+
+                <Panel class="box"  ignoreLayout="true" anchorMin="0 0" anchorMax="1 1" offsetMin="4 26"   offsetMax="-4 -16" />
+                <Panel class="box"  ignoreLayout="true" anchorMin="1 0" anchorMax="1 0" offsetXY="-25 25"  sizeDelta="30.5 29" rotation="0 0 45"  outlineSize="0 1" />
+                <Panel class="box"  ignoreLayout="true" anchorMin="0 0" anchorMax="0 0" offsetXY="25 25"   sizeDelta="30.5 29" rotation="0 0 -45" outlineSize="0 1" />
+                <Panel class="box"  ignoreLayout="true" anchorMin="0 0" anchorMax="1 1" offsetMin="25 4"   offsetMax="-25 -4"                     outlineSize="0 1" />
+                <Panel class="box"  ignoreLayout="true" anchorMin="0 1" anchorMax="1 1" offsetMin="12 -16" offsetMax="-12 -4" />
+                <Panel class="pane" ignoreLayout="true" anchorMin="0 0" anchorMax="1 1" offsetMin="4 26"   offsetMax="-4 -16" />
+
+                <VerticalLayout class="stretch" padding="12 12 4 8">
+                  <InputField id="armorClass" class="stretch boxValue" characterLimit="2" bind="armorClass" bindType="field" />
+                  <Text class="stretch boxLabel locArmorClass" preferredWidth="0" />
+                </VerticalLayout>
+              </VerticalLayout>
+              <VerticalLayout class="stretch padWidth box">
+                <VerticalLayout class="stretch box">
+                  <InputField id="initiative" class="stretch boxValue" bind="initiative" bindType="field" characterLimit="2" />
+                  <VerticalLayout class="stretchWidth padAllButTop">
+                    <Text class="boxLabel locInitiative" />
+                  </VerticalLayout>
+                </VerticalLayout>
+              </VerticalLayout>
+              <VerticalLayout class="stretch padWidth box">
+                <VerticalLayout class="stretch box">
+                  <InputField id="speed" class="stretch boxValue locSpeed" bind="speed" bindType="field" characterLimit="4" characterValidation="decimal" />
+                  <VerticalLayout class="stretchWidth padAllButTop">
+                    <Text class="boxLabel locSpeed" />
+                  </VerticalLayout>
+                </VerticalLayout>
+              </VerticalLayout>
+            </HorizontalLayout>
+            <VerticalLayout class="stretchWidth padWidth box" preferredWidth="0">
+              <VerticalLayout class="stretch box">
+                <HorizontalLayout class="stretch" spacing="8">
+                  <VerticalLayout>
+                    <InputField id="exhaustion" class="boxValue" minWidth="32" fontSize="20" bind="exhaustion" bindType="field" characterLimit="1" />
+                    <Button id="exhaustionMinus" class="box nudge" sizeDelta="12 12" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-0.5 0" bind="exhaustion" bindType="nudge" nudgeAmount="-1">
+                      <Text class="locMinus" />
+                    </Button>
+                    <Button id="exhaustionPlus" class="box nudge" sizeDelta="12 12" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="0.5 0" bind="exhaustion" bindType="nudge" nudgeAmount="1">
+                      <Text class="locPlus" />
+                    </Button>
+                  </VerticalLayout>
+                  <VerticalLayout class="stretch padWidth">
+                    <Text id="exhaustionDesc" class="stretch subLabel" alignment="middleLeft" horizontalOverflow="wrap" />
+                  </VerticalLayout>
+                </HorizontalLayout>
+                <VerticalLayout class="stretchWidth padAllButTop">
+                  <Text class="boxLabel locExhaustion" />
+                </VerticalLayout>
+              </VerticalLayout>
+            </VerticalLayout>
+            <HorizontalLayout class="stretch" spacing="8">
+              <HorizontalLayout class="stretch" spacing="4">
+                <VerticalLayout class="stretch padWidth box">
+                  <VerticalLayout class="stretch box" spacing="4">
+                    <VerticalLayout class="stretch">
+                      <VerticalLayout class="stretchWidth padAllButBottom">
+                        <Button id="spellcastingAbility" class="stretchWidth" onClick="onSpellcastingAbilityClick">
+                          <Text id="spellcastingAbilityText" alignment="upperLeft" />
+                        </Button>
+                        <Panel class="stretchWidth shaded separator" />
+                        <Text class="subLabel locSpellcastingAbilty" />
+                      </VerticalLayout>
+                      <HorizontalLayout class="stretch" spacing="24">
+                        <VerticalLayout class="stretch" preferredWidth="0">
+                          <Text id="spellAttackBonus" class="stretch" fontStyle="bold" />
+                          <VerticalLayout id="spellAttackBonusManual" class="stretch" active="false">
+                            <InputField id="spellAttackBonusMod" class="stretch" textAlignment="middleCenter" fontStyle="bold" bind="spellcasting.attackBonusMod" bindType="field" characterLimit="3" prependPlus="true" />
+                            <Button id="spellAttackBonusModMinus" class="box nudge" sizeDelta="12 12" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-0.5 0" bind="spellcasting.attackBonusMod" bindType="nudge" nudgeAmount="-1">
+                              <Text class="locMinus" />
+                            </Button>
+                            <Button id="spellAttackBonusModPlus" class="box nudge" sizeDelta="12 12" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="0.5 0" bind="spellcasting.attackBonusMod" bindType="nudge" nudgeAmount="1">
+                              <Text class="locPlus" />
+                            </Button>
+                          </VerticalLayout>
+                          <Text class="stretchWidth subLabel locSpellAttackBonus" alignment="lowerCenter" />
+                        </VerticalLayout>
+                        <VerticalLayout class="stretch" preferredWidth="0">
+                          <Text id="spellSaveDc" class="stretch" fontStyle="bold" />
+                          <VerticalLayout id="spellSaveDcManual" class="stretch" active="false">
+                            <InputField id="spellSaveDcMod" class="stretch" textAlignment="middleCenter" fontStyle="bold" bind="spellcasting.saveDcMod" bindType="field" characterLimit="3" prependPlus="true" />
+                            <Button id="spellSaveDcModMinus" class="box nudge" sizeDelta="12 12" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-0.5 0" bind="spellcasting.saveDcMod" bindType="nudge" nudgeAmount="-1">
+                              <Text class="locMinus" />
+                            </Button>
+                            <Button id="spellSaveDcModMinus" class="box nudge" sizeDelta="12 12" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="0.5 0" bind="spellcasting.saveDcMod" bindType="nudge" nudgeAmount="1">
+                              <Text class="locPlus" />
+                            </Button>
+                          </VerticalLayout>
+                          <Text class="stretchWidth subLabel locSpellSaveDc" alignment="lowerCenter" />
+                        </VerticalLayout>
+                      </HorizontalLayout>
+                    </VerticalLayout>
+                    <VerticalLayout class="stretchWidth padAllButTop">
+                      <Text class="boxLabel locSpellcasting" />
+                    </VerticalLayout>
+                    <Button id="spellcastingManualButton" class="box cornerToggle" onClick="onSpellcastingManualClick">
+                      <Text id="spellcastingManualButtonText" />
+                    </Button>
+                  </VerticalLayout>
+                </VerticalLayout>
+              </HorizontalLayout>
+              <VerticalLayout class="stretch padWidth box">
+                <VerticalLayout class="stretch box">
+                  <VerticalLayout class="stretchWidth padAllButBottom">
+                    <InputField id="hitDiceMax" class="stretchWidth locHitDiceTotalHint" bind="hitDice.total" bindType="field" />
+                    <Panel class="stretchWidth shaded separator" />
+                    <Text class="subLabel locHitDiceTotalLabel" />
+                  </VerticalLayout>
+                  <InputField id="hitDiceCurrent" class="stretch boxValue" lineType="multiLineNewLine" fontSize="16" bind="hitDice.remaining" bindType="field" />
+                  <VerticalLayout class="stretchWidth padAllButTop">
+                    <Text class="boxLabel locHitDice" />
+                  </VerticalLayout>
+                </VerticalLayout>
+              </VerticalLayout>
+            </HorizontalLayout>
+          </VerticalLayout>
+          <VerticalLayout class="stretchHeight" preferredWidth="88" spacing="4">
+            <VerticalLayout class="stretchWidth padAllButBottom box">
+              <VerticalLayout class="stretch box">
+                <VerticalLayout class="stretch">
+                  <InputField id="tempHp" class="stretchWidth boxValue" bind="hp.temp" bindType="field" characterLimit="3" />
+                  <Button id="tempHpMinus" class="box nudge" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-0.5 0" bind="hp.temp" bindType="nudge" nudgeAmount="-1">
+                    <Text class="locMinus" />
+                  </Button>
+                  <Button id="tempHpPlus" class="box nudge" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="0.5 0" bind="hp.temp" bindType="nudge" nudgeAmount="1">
+                    <Text class="locPlus" />
+                  </Button>
+                </VerticalLayout>
+                <VerticalLayout class="stretchWidth padAllButTop">
+                  <Text class="boxLabel locTempHp" />
+                </VerticalLayout>
+              </VerticalLayout>
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth padWidth box">
+              <Button id="toggleDeathSaves" class="box" ignoreLayout="true" anchorMin="1 1" anchorMax="1 1" pivot="0 1" offsetXY="-4 -4" sizeDelta="12 12" onClick="onToggleDeathSavesClick">
+                <Text id="toggleDeathSavesText" fontSize="8" />
+              </Button>
+              <VerticalLayout id="currentHpContainer" class="stretch box">
+                <VerticalLayout class="stretch">
+                  <InputField id="currentHp" class="stretch boxValue" preferredHeight="72" bind="hp.current" bindType="field" characterLimit="3" onEndEdit="onCurrentHpUnfocus" />
+                  <Button id="currentHpMinus" class="box nudge" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-0.5 0" bind="hp.current" bindType="nudge" nudgeAmount="-1" onClick="onCurrentHpNudgeClick">
+                    <Text class="locMinus" />
+                  </Button>
+                  <Button id="currentHpPlus" class="box nudge" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="0.5 0" bind="hp.current" bindType="nudge" nudgeAmount="1" onClick="onCurrentHpNudgeClick">
+                    <Text class="locPlus" />
+                  </Button>
+                </VerticalLayout>
+                <VerticalLayout class="stretchWidth padAllButTop">
+                  <Text class="boxLabel locCurrentHp" />
+                </VerticalLayout>
+              </VerticalLayout>
+              <VerticalLayout id="deathSavesContainer" class="stretch box" active="false">
+                <VerticalLayout class="stretch padWidth" preferredHeight="72" spacing="8" childAlignment="middleCenter">
+                  <VerticalLayout class="stretchWidth padWidth">
+                    <Text class="subLabel locDeathSaveSuccesses" />
+                    <Panel class="stretch" preferredHeight="14">
+                      <Panel class="box" anchorMin="0 0.5" anchorMax="1 0.5" sizeDelta="-14 4">
+                        <Panel class="box" anchorMin="0 0.5" anchorMax="0 0.5" sizeDelta="12 12">
+                          <Text id="deathSuccess1" sizeDelta="16 16" fontSize="14" alignment="middleCenter" />
+                        </Panel>
+                        <Panel class="box" anchorMin="0.5 0.5" anchorMax="0.5 0.5" sizeDelta="12 12">
+                          <Text id="deathSuccess2" sizeDelta="16 16" fontSize="14" alignment="middleCenter" />
+                        </Panel>
+                        <Panel class="box" anchorMin="1 0.5" anchorMax="1 0.5" sizeDelta="12 12">
+                          <Text id="deathSuccess3" sizeDelta="16 16" fontSize="14" alignment="middleCenter" />
+                        </Panel>
+                      </Panel>
+                      <Button id="deathSuccesses" onClick="onDeathSaveClick" />
+                    </Panel>
+                  </VerticalLayout>
+                  <VerticalLayout class="stretchWidth padWidth">
+                    <Text class="subLabel locDeathSaveFailures" />
+                    <Panel class="stretch" preferredHeight="14">
+                      <Panel class="box" anchorMin="0 0.5" anchorMax="1 0.5" sizeDelta="-14 4">
+                        <Panel class="box" anchorMin="0 0.5" anchorMax="0 0.5" sizeDelta="12 12">
+                          <Text id="deathFailure1" sizeDelta="16 16" fontSize="14" alignment="middleCenter" />
+                        </Panel>
+                        <Panel class="box" anchorMin="0.5 0.5" anchorMax="0.5 0.5" sizeDelta="12 12">
+                          <Text id="deathFailure2" sizeDelta="16 16" fontSize="14" alignment="middleCenter" />
+                        </Panel>
+                        <Panel class="box" anchorMin="1 0.5" anchorMax="1 0.5" sizeDelta="12 12">
+                          <Text id="deathFailure3" sizeDelta="16 16" fontSize="14" alignment="middleCenter" />
+                        </Panel>
+                      </Panel>
+                      <Button id="deathFailures" onClick="onDeathSaveClick" />
+                    </Panel>
+                  </VerticalLayout>
+                </VerticalLayout>
+                <VerticalLayout class="stretchWidth padAllButTop">
+                  <Text class="boxLabel locDeathSaves" />
+                </VerticalLayout>
+              </VerticalLayout>
+            </VerticalLayout>
+            <VerticalLayout class="stretchWidth padAllButTop box" anchorMin="0.75 0">
+              <VerticalLayout class="stretch box">
+                <VerticalLayout class="stretch">
+                  <InputField id="maxHp" class="stretchWidth boxValue" bind="hp.max" bindType="field" characterLimit="3" />
+                  <Button id="maxHpMinus" class="box nudge" anchorMin="0 0.5" anchorMax="0 0.5" offsetXY="-0.5 0" bind="hp.max" bindType="nudge" nudgeAmount="-1">
+                    <Text class="locMinus" />
+                  </Button>
+                  <Button id="maxHpPlus" class="box nudge" anchorMin="1 0.5" anchorMax="1 0.5" offsetXY="0.5 0" bind="hp.max" bindType="nudge" nudgeAmount="1">
+                    <Text class="locPlus" />
+                  </Button>
+                </VerticalLayout>
+                <VerticalLayout class="stretchWidth padAllButTop">
+                  <Text class="boxLabel locMaxHp" />
+                </VerticalLayout>
+              </VerticalLayout>
+            </VerticalLayout>
+          </VerticalLayout>
+        </HorizontalLayout>
+        <VerticalLayout class="stretch pad box">
+          <VerticalScrollView id="attacksScrollView" class="stretch" verticalScrollbarSpacing="4" scrollSensitivity="16">
+            <VerticalLayout class="stretchWidth" spacing="4" padding="0 0 -4 0" childAlignment="upperRight">
+              <VerticalLayout id="attacksContainer" class="stretchWidth" spacing="4" />
+              <Button id="attackAdd" class="shaded" preferredWidth="16" preferredHeight="16" onClick="onAttackAddClick">
+                <Text class="relief locPlus" ignoreLayout="true" />
+              </Button>
+            </VerticalLayout>
+          </VerticalScrollView>
+          <Text class="boxLabel locAttacks" />
+        </VerticalLayout>
+        <VerticalLayout class="stretch pad box">
+          <HorizontalLayout class="stretch" spacing="4">
+            <VerticalScrollView id="traitsScrollView" class="stretchHeight" preferredWidth="100" verticalScrollbarSpacing="4" scrollSensitivity="16">
+              <VerticalLayout class="stretchWidth" spacing="4">
+                <VerticalLayout id="traitsContainer" class="stretchWidth" spacing="4" />
+                <Button id="traitAdd" class="stretchWidth shaded relief locPlus" preferredHeight="20" onClick="onTraitAddClick">
+                  <Text class="relief locPlus" ignoreLayout="true" />
+                </Button>
+              </VerticalLayout>
+            </VerticalScrollView>
+            <VerticalLayout class="stretch" spacing="4">
+              <Text id="noTraitSelected" class="stretchWidth" fontStyle="bold" textAlignment="middleCenter" preferredHeight="24" />
+              <HorizontalLayout id="traitNameContainer" class="stretchWidth" spacing="4" active="false">
+                <VerticalLayout class="stretchHeight" preferredWidth="16" spacing="4">
+                  <Button id="traitMoveUp" class="stretch shaded relief" preferredHeight="6" onClick="onTraitMoveClick">
+                    <Text class="relief" ignoreLayout="true" fontSize="6" text="&#9650;" /><!--up triangle-->
+                  </Button>
+                  <Button id="traitMoveDown" class="stretch shaded relief" preferredHeight="6" onClick="onTraitMoveClick">
+                    <Text class="relief" ignoreLayout="true" fontSize="6" text="&#9660;" /><!--up triangle-->
+                  </Button>
+                </VerticalLayout>
+                <InputField id="traitName" class="stretchWidth shaded" fontStyle="bold" textAlignment="middleCenter" preferredHeight="24" onValueChanged="onTraitEdit" />
+                <Button id="traitDelete" class="stretchHeight shaded relief locMinus" preferredWidth="16" onClick="onTraitDeleteClick">
+                  <Text class="relief locMinus" ignoreLayout="true" />
+                </Button>
+              </HorizontalLayout>
+              <VerticalScrollView id="traitDescScrollView" class="stretch" verticalScrollbarSpacing="4" doMinContentHeight="true" scrollSensitivity="16">
+                <InputField id="traitDesc" class="stretch locTraitDescription" fontSize="12" textOffset="4 4 4 4" lineType="multiLineNewLine" onValueChanged="onTraitEdit" />
+              </VerticalScrollView>
+            </VerticalLayout>
+          </HorizontalLayout>
+          <Text class="boxLabel locFeaturesTraits" />
+        </VerticalLayout>
+      </VerticalLayout>
+    </HorizontalLayout>
+  </VerticalLayout>
+</Panel>
+
+<Panel id="back" class="main back">
+  <VerticalLayout childAlignment="middleCenter">
+    <VerticalLayout class="box" preferredWidth="180">
+      <Button id="copyDataButton" class="stretchWidth pad" preferredHeight="25" onClick="showCopyWindow">
+        <Text class="locCopyToJson" />
+      </Button>
+      <Button id="pasteDataButton" class="stretchWidth pad" preferredHeight="25" onClick="showPasteWindow">
+        <Text class="locPasteFromJson" />
+      </Button>
+      <VerticalLayout class="stretchWidth padAllButTop">
+        <Text class="boxLabel locOptions" />
+      </VerticalLayout>
+    </VerticalLayout>
+  </VerticalLayout>
+  <VerticalLayout id="jsonWindow" class="pad box jsonWindow" active="false">
+    <InputField id="jsonInput" class="stretch jsonInput" />
+    <Button id="jsonDoneButton" class="stretchWidth shaded" preferredHeight="24" onClick="closeJsonWindow">
+      <Text class="relief locJsonDone" />
+    </Button>
+    <Text class="boxLabel locJson" />
+  </VerticalLayout>
+</Panel>
+
+<!-- include !/smart-character-sheet/ui -->
