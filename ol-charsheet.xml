@@ -9,14 +9,14 @@
 
     <!-- This determines the styling for input text boxes (classified as Input Fields). Colour is a key entry as it prevents the emissive in low light issue -->
     <InputField
-      onEndEdit="update_field"
       colors="#FFFFFF00|#FFFFFF00|#FFFFFF00|#FFFFFF00"
       fontStyle="Bold"
       horizontalOverflow="Wrap"
       placeholder=" "
       resizeTextForBestFit="true"
       resizeTextMinSize="12"
-      resizeTextMaxSize="200"/>
+      resizeTextMaxSize="200"
+      onEndEdit="update_field"/>
     
     <!-- General text styling -->
     <Text
@@ -71,7 +71,7 @@
       characterValidation="Integer"
       textAlignment="MiddleCenter"
       text="0"
-      onEndEdit="attr_updated"/>
+      onValueChanged="attr_updated"/>
 
     <!-- Defenses -->
     <!-- Need text for Guard, Toughness, Resolve -->
@@ -96,7 +96,7 @@
       characterValidation="Integer"
       textAlignment="MiddleCenter"
       text="0"
-      onEndEdit="def_updated"/>
+      onValueChanged="def_updated"/>
 
     <!-- Hit Points -->
     <!-- Current and Max use "def", other uses "armour_other" -->
@@ -183,7 +183,7 @@
       textAlignment="MiddleCenter"/>
 
     <Image
-      class="lock"
+      class="Lock"
       position="0 0 -20.1"
       rotation="180 180 0"
       scale="0.08235 0.08235"
@@ -208,7 +208,7 @@
     <InputField id="archetype" class="basic" position="235 1120 0" width="352"/>
     <InputField id="player" class="basic" position="-434 1060 0" width="419"/>
     <Text id="level" class="basic" position="30 1063 0" width="100" text="1"/>
-    <InputField id="xp" class="basic" position="304 1060 0" width="217" characterValidation="Integer" text="0" onEndEdit="xp_changed"/>
+    <InputField id="xp" class="basic" position="304 1060 0" width="217" characterValidation="Integer" text="0" onValueChanged="xp_changed"/>
     <InputField id="description" class="basic" position="157 1000 0" width="1336"/>
     
     <!-- Attributes -->
@@ -309,11 +309,11 @@
     <!-- Hit Points -->
     <Text id="hp_current" class="def" position="480 675 0"/>
     <Text id="hp_max" class="def" position="720 675 0"/>
-    <InputField id="hp_other" class="hp_other" position="710 587" onEndEdit="update_hp_other"/>
+    <InputField id="hp_other" class="hp_other" position="710 587" onValueChanged="update_hp_other"/>
 
     <!-- Sec Attr -->
-    <InputField id="damage" class="sec_attr" position="445 350" onEndEdit="update_damage"/>
-    <InputField id="lethal_damage" class="sec_attr" position="762 350" onEndEdit="update_lethal_damage"/>
+    <InputField id="dmg" class="sec_attr" position="445 350" onValueChanged="update_damage"/>
+    <InputField id="lethal_damage" class="sec_attr" position="762 350" onValueChanged="update_lethal_damage"/>
     <InputField id="wealth" class="sec_attr" position="445 160" text="2"/>
     <InputField id="speed" class="sec_attr" position="762 160" text="30"/>
 
@@ -393,7 +393,7 @@
     <InputField id="flaw2" class="perk_flaw" position="689 -1061"/>
 
 </Panel>
-<Image id="lock" class="lock">
+<Image id="Lock" class="Lock">
     <ToggleButton
       id="LockToggle"
       onValueChanged="update_lock"

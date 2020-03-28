@@ -17,6 +17,11 @@ local attr_costs = {'agi_cost', 'fort_cost', 'mig_cost',
                     'ler_cost', 'log_cost', 'perc_cost', 'will_cost', 
                     'alt_cost', 'cre_cost', 'ene_cost', 'ent_cost', 
                     'inf_cost', 'mov_cost', 'prescience_cost', 'pro_cost'}
+local attr_scores = {'agi_score', 'fort_score', 'mig_score', 
+                    'dec_score', 'presence_score', 'pers_score', 
+                    'ler_score', 'log_score', 'perc_score', 'will_score', 
+                    'alt_score', 'cre_score', 'ene_score', 'ent_score', 
+                    'inf_score', 'mov_score', 'prescience_score', 'pro_score'}
 
 function onSave()
     return JSON.encode(save_data)
@@ -45,6 +50,21 @@ function load_data()
         if type == "Text" then
             for id, value in pairs(values) do
                 set_text(id, value)
+                if string.find(id, "xp") then
+                    xp_changed(_, value, id)
+                elseif string.find(id, "guard") or 
+                string.find(id, "toughness") or
+                string.find(id, "resolve") then
+                    def_updated(_, value, id)
+                elseif string.find(id, "score") then
+                    attr_updated(_, value, id)
+                elseif string.find(id, 'hp') then
+                    update_hp_other(_, value, id)
+                elseif string.find('dmg', id) then
+                    update_damage(_, value, id)
+                elseif string.find('lethal_damage', id) then
+                    update_lethal_damage(_, value, id)
+                end
             end
         elseif type == "Toggle" then
             for id, value in pairs(values) do
@@ -115,7 +135,7 @@ end
 
 -- Custom lock button --
 function update_lock(_, value, id)
-    setAttr("Lock", "raycastTarget", value)
+    set_attr("Lock", "raycastTarget", value)
     save_toggle(id, value)
 end
 
@@ -244,6 +264,7 @@ end
 
 -- what to do if an attribute is updated
 function attr_updated(_, value, id)
+    
     if value then
         --Identify the id so you can get the corresponding ids
         local results = {}
@@ -252,7 +273,6 @@ function attr_updated(_, value, id)
         end
         local attr_id = results[1]
         value = tonumber(value)
-        
         --Update cost
         local cost = value * (value+1) / 2
         set_text(attr_id .. "_cost", cost)
