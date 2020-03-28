@@ -1,7 +1,17 @@
 --Establishing persistence between loads--
 local save_data
-local def_attrs = {'agi_score', 'mig_score', 'fort_score', 'will_score', 'presence_score'}
-local hp_attrs = {'fort_score', 'will_score', 'presence_score'}
+
+-- Globals, because ui updates don't function apparently 
+local damage = 0
+local lethal_damage = 0
+local other_hp = 0
+
+local cost_to_attr = {[0] = 0, [1] = 1, [3] = 2, [6] = 3, [10] = 4, 
+                    [15] = 5, [21] = 6, [28] = 7, [36] = 8, [45] = 9}
+local guard_ids = {'guard_agi', 'guard_mig', 'guard_arm', 'guard_other'}
+local toughness_ids = {'toughness_fort', 'toughness_will', 'toughness_other'}
+local resolve_ids = {'resolve_presence', 'resolve_will', 'resolve_other'}
+local hp_attrs = {'fort_cost', 'will_cost', 'presence_cost'}
 local attr_costs = {'agi_cost', 'fort_cost', 'mig_cost', 
                     'dec_cost', 'presence_cost', 'pers_cost', 
                     'ler_cost', 'log_cost', 'perc_cost', 'will_cost', 
@@ -48,12 +58,6 @@ function load_data()
 end
 
 --Basic Functions--
---1d array iterator
-function iterator_func(t)
-    local i = 0
-    return function() i = i + 1; return t[i] end
-end
-
 function save(type, id, value)
     save_data[type][id] = value
 	self.script_state = JSON.encode(save_data)
@@ -138,8 +142,7 @@ function xp_changed(_, value, id)
         local attr_total = 40 + value * 3
         set_text("attr_total", attr_total)
         --Check formatting on attr_spent to see if it needs updating
-        print(isnumber(get_text("attr_spent")))
-        if attr_total < isnumber(get_text("attr_spent")) then
+        if attr_total < tonumber(get_text("attr_spent")) then
             set_attr("attr_spent", "color", "#FF0000")
         else
             set_attr("attr_spent", "color", "#666666")
@@ -150,15 +153,96 @@ function xp_changed(_, value, id)
     end
 end
 
--- Get the total cost values
-function get_spent()
+-- Get the total cost values, except for the triggering attribute
+function get_spent(attr_id)
     local total_costs = 0
-    for i in iterator_func(attr_costs) do
-        total_costs = total_costs + tonumber(get_text(i))
+    for i, v in ipairs(attr_costs) do
+        if not string.find(v, attr_id) then
+            total_costs = total_costs + tonumber(get_text(v))
+        end
     end
     return total_costs
 end
 
+-- Update the defensive scores
+-- Update Guard
+function update_guard(attr_id)
+    local guard = 10
+    for i, v in ipairs(guard_ids) do
+        if not string.find(v, attr_id) then
+            guard = guard + tonumber(get_text(v))
+        end
+    end
+    return guard
+end
+-- Update Toughness
+function update_toughness(attr_id)
+    local toughness = 10
+    for i, v in ipairs(toughness_ids) do
+        if not string.find(v, attr_id) then
+            toughness = toughness + tonumber(get_text(v))
+        end
+    end
+    return toughness
+end
+-- Update Resolve
+function update_resolve(attr_id)
+    local resolve = 10
+    for i, v in ipairs(resolve_ids) do
+        if not string.find(v, attr_id) then
+            resolve = resolve + tonumber(get_text(v))
+        end
+    end
+    return resolve
+end
+
+-- Get values from a change in the defence entries
+function def_updated(_, value, id)
+    if value then
+        --Identify the id so you can get the corresponding ids
+        local results = {}
+        for match in string.gmatch(id, "[^_]+") do
+            table.insert(results, match)
+        end
+        local attr_id = results[2]
+        value = tonumber(value)
+        if string.find(id, "guard") then
+            local new_guard = update_guard(attr_id) + value
+            set_text("guard_" .. attr_id, value)
+            set_text("guard", new_guard)
+        elseif string.find(id, "toughness") then
+            local new_toughness = update_toughness(attr_id) + value
+            set_text("toughness_" .. attr_id, value)
+            set_text("toughness", new_toughness)
+        elseif string.find(id, "resolve") then
+            local new_resolve = update_resolve(attr_id) + value
+            set_text("resolve_" .. attr_id, value)
+            set_text("resolve", new_resolve)
+        end
+    end
+end
+
+function calc_hp(id, value, attr)
+    -- Calculate the attribute contributions
+    local attr_total = 0
+    local max_hp = 0
+    for i, v in ipairs(hp_attrs) do
+        if not string.find(v, id) then
+            attr_total = attr_total + cost_to_attr[tonumber(get_text(v))]
+        end
+    end
+    if attr then
+        max_hp = 10 + 2 * (attr_total + value) + other_hp
+    else
+        max_hp = 10 + 2 * (attr_total) + other_hp
+    end
+    max_hp = max_hp - lethal_damage
+    set_text("hp_max", max_hp)
+    local current_hp = max_hp - damage
+    set_text("hp_current", current_hp)
+end
+
+-- what to do if an attribute is updated
 function attr_updated(_, value, id)
     if value then
         --Identify the id so you can get the corresponding ids
@@ -197,15 +281,59 @@ function attr_updated(_, value, id)
         set_text(attr_id .. "_dice", dice)
 
         --Update attr_spent
-        local spent = get_spent() + cost
+        local spent = get_spent(attr_id) + cost
         set_text("attr_spent", spent)
         if spent > tonumber(get_text("attr_total")) then
             set_attr("attr_spent", "color", "#FF0000")
         else
             set_attr("attr_spent", "color", "#666666")
         end
+
         --Update def_attr
-        --Update def
+        for i, v in ipairs(guard_ids) do
+            if string.find(v, attr_id) then
+                local new_guard = update_guard(attr_id) + value
+                set_text("guard_" .. attr_id, value)
+                set_text("guard", new_guard)
+            end
+        end
+        for i, v in ipairs(toughness_ids) do
+            if string.find(v, attr_id) then
+                local new_toughness = update_toughness(attr_id) + value
+                set_text("toughness_" .. attr_id, value)
+                set_text("toughness", new_toughness)
+            end
+        end
+        for i, v in ipairs(resolve_ids) do
+            if string.find(v, attr_id) then
+                local new_resolve = update_resolve(attr_id) + value
+                set_text("resolve_" .. attr_id, value)
+                set_text("resolve", new_resolve)
+            end
+        end
+
         --Update HP
+        for i, v in ipairs(hp_attrs) do
+            if string.find(v, attr_id) then 
+                calc_hp(attr_id, value, true)
+            end
+        end
     end
+end
+
+--Custom HP modifier
+function update_hp_other(_, value, id)
+    other_hp = tonumber(value)
+    calc_hp(id, value, false)
+end
+
+--Handling changes to damage and lethal damage
+function update_damage(_, value, id)
+    damage = tonumber(value)
+    calc_hp(id, value, false)
+end
+
+function update_lethal_damage(_, value, id)
+    lethal_damage = tonumber(value)
+    calc_hp(id, value, false)
 end

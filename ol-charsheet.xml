@@ -95,11 +95,18 @@
       height="52"
       characterValidation="Integer"
       textAlignment="MiddleCenter"
-      text="0"/>
+      text="0"
+      onEndEdit="def_updated"/>
 
     <!-- Hit Points -->
     <!-- Current and Max use "def", other uses "armour_other" -->
-
+    <InputField
+      class="hp_other"
+      width="70"
+      height="52"
+      characterValidation="Integer"
+      textAlignment="MiddleCenter"
+      text="0"/>
     <!-- Secondary Attributes -->
     <!-- Need inputfield for Damage, Lethal Damage, Wealth, Speed -->
     <InputField
@@ -302,11 +309,11 @@
     <!-- Hit Points -->
     <Text id="hp_current" class="def" position="480 675 0"/>
     <Text id="hp_max" class="def" position="720 675 0"/>
-    <InputField id="hp_other" class="armour_other" position="710 587"/>
+    <InputField id="hp_other" class="hp_other" position="710 587" onEndEdit="update_hp_other"/>
 
     <!-- Sec Attr -->
-    <InputField id="damage" class="sec_attr" position="445 350"/>
-    <InputField id="lethal_damage" class="sec_attr" position="762 350"/>
+    <InputField id="damage" class="sec_attr" position="445 350" onEndEdit="update_damage"/>
+    <InputField id="lethal_damage" class="sec_attr" position="762 350" onEndEdit="update_lethal_damage"/>
     <InputField id="wealth" class="sec_attr" position="445 160" text="2"/>
     <InputField id="speed" class="sec_attr" position="762 160" text="30"/>
 
