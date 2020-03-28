@@ -1,3 +1,13 @@
+--[[
+    Resturcturing:
+    All ui elements need to be stored as global variables (local for the runtime of the script, global in the sense that they are across the object).
+    Globals can be stored in arrays to minimise complexity.
+    Event's fired from the XML should just be to update the globals, and then call the relevant update functions, which should read in the globals and make any modifications necessary.
+    The save function should be called on all edits as normal.
+    On load, globals will need to be populated from the save_data json object, then all update functions run.
+
+]]
+
 --Establishing persistence between loads--
 local save_data
 
@@ -22,6 +32,7 @@ local attr_scores = {'agi_score', 'fort_score', 'mig_score',
                     'ler_score', 'log_score', 'perc_score', 'will_score', 
                     'alt_score', 'cre_score', 'ene_score', 'ent_score', 
                     'inf_score', 'mov_score', 'prescience_score', 'pro_score'}
+local attributes = {['agility'] = 0, ['fortitude'] = 0, ['might']}
 
 function onSave()
     return JSON.encode(save_data)
