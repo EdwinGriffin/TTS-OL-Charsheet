@@ -21,6 +21,7 @@
     <!-- General text styling -->
     <Text
       fontStyle="Bold"
+      color="#666666"
       horizontalOverflow="Wrap"
       resizeTextForBestFit="true"
       resizeTextMinSize="12"
@@ -96,57 +97,81 @@
       text="0"/>
 
     <!-- Hit Points -->
-    <!-- Need text for Current, Max -->
-    <Text
-      class="hp"
-      width="111"
-      height="111"
-      textAlignment="MiddleCenter"/>
-    <!-- Need inputfield for Other !!! Uses Def-Attr !!! -->
+    <!-- Current and Max use "def", other uses "armour_other" -->
 
     <!-- Secondary Attributes -->
     <!-- Need inputfield for Damage, Lethal Damage, Wealth, Speed -->
     <InputField
       class="sec_attr"
-      width="111"
-      height="111"
+      width="125"
+      height="125"
       characterValidation="Integer"
-      textAlignment="MiddleCenter"/>
+      textAlignment="MiddleCenter"
+      text="0"/>
 
-    <!-- Items -->
-    <!-- Need inputfield for Weapons, Equipment, Armour -->
+    <!-- Actions -->
+    <!-- Need inputfield for Name & Special, and Attr and Target & Dice -->
     <InputField
-      class="items"
-      width="111"
-      height="111"
+      class="action_name_special"
+      width="295"
+      height="40"
+      textAlignment="MiddleLeft"/>
+    <InputField
+      class="action_attr"
+      width="109"
+      height="40"
+      textAlignment="MiddleCenter"/>
+    <InputField
+      class="action_target_dice"
+      width="115"
+      height="40"
+      textAlignment="MiddleCenter"/>
+    <!-- Items -->
+    <!-- Need inputfield for Weapons, and Armour -->
+    <InputField
+      class="armour"
+      width="461"
+      height="40"
+      textAlignment="MiddleLeft"/>
+
+    <InputField
+      class="weapon"
+      width="493"
+      height="40"
       textAlignment="MiddleLeft"/>
 
     <!-- Feats -->
     <!-- Need inputfield for feats -->
     <InputField
-      class="feats"
-      width="111"
-      height="111"
+      class="feat"
+      width="320"
+      height="40"
+      textAlignment="MiddleLeft"/>
+    <!-- For the second feat coloumn, because the designer is evil-->
+    <InputField
+      class="feat2"
+      width="341"
+      height="40"
       textAlignment="MiddleLeft"/>
     <!-- Need inputfield for perks, faws -->
     <InputField
       class="perk_flaw"
-      width="111"
-      height="111"
+      width="314"
+      height="40"
       textAlignment="MiddleLeft"/>
 
     <!-- Points -->
     <!-- Text for attr-total, attr-spent, feat-total -->
     <Text
       class="points"
-      width="111"
-      height="111"
+      width="50"
+      height="30"
       textAlignment="MiddleCenter"/>
     <!-- inputfield for feat-spent -->
     <InputField
       class="feat_spent"
-      width="111"
-      height="111"
+      width="60"
+      height="44"
       textAlignment="MiddleCenter"/>
 
     <Image
@@ -179,6 +204,9 @@
     <InputField id="description" class="basic" position="157 1000 0" width="1336"/>
     
     <!-- Attributes -->
+    <!-- Points -->
+    <Text id="attr_total" class="points" position="-495 750 0" text="0"/>
+    <Text id="attr_spent" class="points" position="-495 717 0" text="0"/>
     <!-- Agility -->
     <InputField id="agil_score" class="score" position="-583 519 0"/>
     <Text id="agi_cost" class="cost_dice" position="-450 519 0" text="0"/>
@@ -261,9 +289,100 @@
     <InputField id="guard_other" class="armour_other" position="218 729" />
     <!-- Toughness -->
     <Text id="toughness" class="def" position="-65 465 0"/>
+    <Text id="toughness_fort" class="der_def" position="218 553" />
+    <Text id="toughness_will" class="der_def" position="218 508" />
+    <InputField id="toughness_other" class="armour_other" position="218 466" />
     <!-- Resolve -->
     <Text id="resolve" class="def" position="-65 160 0"/>
+    <Text id="resolve_presence" class="der_def" position="218 242" />
+    <Text id="resolve_will" class="der_def" position="218 197" />
+    <InputField id="resolve_other" class="armour_other" position="218 155" />
 
+    <!-- Hit Points -->
+    <Text id="hp_current" class="def" position="480 675 0"/>
+    <Text id="hp_max" class="def" position="720 675 0"/>
+    <InputField id="hp_other" class="armour_other" position="710 587"/>
+
+    <!-- Sec Attr -->
+    <InputField id="damage" class="sec_attr" position="445 350"/>
+    <InputField id="lethal_damage" class="sec_attr" position="762 350"/>
+    <InputField id="wealth" class="sec_attr" position="445 160"/>
+    <InputField id="speed" class="sec_attr" position="762 160"/>
+
+    <!-- Actions -->
+    <InputField id="act1_name" class="action_name_special" position="-11 -145"/>
+    <InputField id="act1_attr" class="action_attr" position="203 -145"/>
+    <InputField id="act1_target" class="action_target_dice" position="356 -145"/>
+    <InputField id="act1_dice" class="action_target_dice" position="482 -145"/>
+    <InputField id="act1_special" class="action_name_special" position="697 -145"/>
+    <InputField id="act2_name" class="action_name_special" position="-11 -189"/>
+    <InputField id="act2_attr" class="action_attr" position="203 -189"/>
+    <InputField id="act2_target" class="action_target_dice" position="356 -189"/>
+    <InputField id="act2_dice" class="action_target_dice" position="482 -189"/>
+    <InputField id="act2_special" class="action_name_special" position="697 -189"/>
+    <InputField id="act3_name" class="action_name_special" position="-11 -233"/>
+    <InputField id="act3_attr" class="action_attr" position="203 -233"/>
+    <InputField id="act3_target" class="action_target_dice" position="356 -233"/>
+    <InputField id="act3_dice" class="action_target_dice" position="482 -233"/>
+    <InputField id="act3_special" class="action_name_special" position="697 -233"/>
+    <InputField id="act4_name" class="action_name_special" position="-11 -276"/>
+    <InputField id="act4_attr" class="action_attr" position="203 -276"/>
+    <InputField id="act4_target" class="action_target_dice" position="356 -276"/>
+    <InputField id="act4_dice" class="action_target_dice" position="482 -276"/>
+    <InputField id="act4_special" class="action_name_special" position="697 -276"/>
+    <InputField id="act5_name" class="action_name_special" position="-11 -320"/>
+    <InputField id="act5_attr" class="action_attr" position="203 -320"/>
+    <InputField id="act5_target" class="action_target_dice" position="356 -320"/>
+    <InputField id="act5_dice" class="action_target_dice" position="482 -320"/>
+    <InputField id="act5_special" class="action_name_special" position="697 -320"/>
+    <InputField id="act6_name" class="action_name_special" position="-11 -365"/>
+    <InputField id="act6_attr" class="action_attr" position="203 -365"/>
+    <InputField id="act6_target" class="action_target_dice" position="356 -365"/>
+    <InputField id="act6_dice" class="action_target_dice" position="482 -365"/>
+    <InputField id="act6_special" class="action_name_special" position="697 -365"/>
+    <InputField id="act7_name" class="action_name_special" position="-11 -409"/>
+    <InputField id="act7_attr" class="action_attr" position="203 -409"/>
+    <InputField id="act7_target" class="action_target_dice" position="356 -409"/>
+    <InputField id="act7_dice" class="action_target_dice" position="482 -409"/>
+    <InputField id="act7_special" class="action_name_special" position="697 -409"/>
+    
+    <!-- Items -->
+    <!-- Armour -->
+    <InputField id="arm1" class="armour" position="87 -507"/>
+    <InputField id="arm2" class="armour" position="87 -551"/>
+    <InputField id="arm3" class="armour" position="87 -593"/>
+    <!-- Weapons -->
+    <InputField id="weap1" class="weapon" position="594 -507"/>
+    <InputField id="weap2" class="weapon" position="594 -551"/>
+    <InputField id="weap3" class="weapon" position="594 -593"/>
+
+    <!-- Feats -->
+    <!-- Points -->
+    <Text id="feat_total" class="points" position="131 -727 0" text="0"/>
+    <InputField id="feat_spent" class="feat_spent" position="131 -760 0" text="0"/>
+    <!-- Feat Text -->
+    <InputField id="feat1" class="feat" position="0 -796"/>
+    <InputField id="feat2" class="feat" position="0 -840"/>
+    <InputField id="feat3" class="feat" position="0 -884"/>
+    <InputField id="feat4" class="feat" position="0 -928"/>
+    <InputField id="feat5" class="feat" position="0 -973"/>
+    <InputField id="feat6" class="feat" position="0 -1018"/>
+    <InputField id="feat7" class="feat" position="0 -1061"/>
+    <InputField id="feat8" class="feat2" position="344 -796"/>
+    <InputField id="feat9" class="feat2" position="344 -840"/>
+    <InputField id="feat10" class="feat2" position="344 -884"/>
+    <InputField id="feat11" class="feat2" position="344 -928"/>
+    <InputField id="feat12" class="feat2" position="344 -973"/>
+    <InputField id="feat13" class="feat2" position="344 -1018"/>
+    <InputField id="feat14" class="feat2" position="344 -1061"/>
+
+    <!-- Perks & Flaws -->
+    <InputField id="perk1" class="perk_flaw" position="689 -796"/>
+    <InputField id="perk2" class="perk_flaw" position="689 -840"/>
+    <InputField id="perk3" class="perk_flaw" position="689 -884"/>
+    <InputField id="perk4" class="perk_flaw" position="689 -928"/>
+    <InputField id="flaw1" class="perk_flaw" position="689 -1018"/>
+    <InputField id="flaw2" class="perk_flaw" position="689 -1061"/>
 
 </Panel>
 <Image id="lock" class="lock">
