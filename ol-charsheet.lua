@@ -161,7 +161,10 @@ end
 
 -- Automation functions --
 function xp_changed(_, value, id)
-    if value and not is_empty(value) then 
+    if value then 
+        if is_empty(value) then
+            value = 0
+        end
         value = tonumber(value)
         --Update level
         local level = 0
@@ -184,7 +187,10 @@ end
 
 -- Get values from a change in the defence entries
 function def_updated(_, value, id)
-    if value and not is_empty(value) then
+    if value then
+        if is_empty(value) then
+            value = 0
+        end
         --Identify the id so you can get the corresponding ids
         local results = {}
         for match in string.gmatch(id, "[^_]+") do
@@ -211,7 +217,10 @@ end
 -- what to do if an attribute is updated
 function attr_updated(_, value, id)
     
-    if value and not is_empty(value) then
+    if value then
+        if is_empty(value) then
+            value = 0
+        end
         --Identify the id so you can get the corresponding ids
         local results = {}
         for match in string.gmatch(id, "[^_]+") do
@@ -289,19 +298,34 @@ end
 
 --Custom HP modifier
 function update_hp_other(_, value, id)
-    other_hp = tonumber(value)
-    calc_hp(id, value, false)
+    if value then
+        if is_empty(value) then
+            value = 0
+        end
+        other_hp = tonumber(value)
+        calc_hp(id, value, false)
+    end
 end
 
 --Handling changes to damage and lethal damage
 function update_damage(_, value, id)
-    damage = tonumber(value)
-    calc_hp(id, value, false)
+    if value then
+        if is_empty(value) then
+            value = 0
+        end
+        damage = tonumber(value)
+        calc_hp(id, value, false)
+    end
 end
 
 function update_lethal_damage(_, value, id)
-    lethal_damage = tonumber(value)
-    calc_hp(id, value, false)
+    if value then
+        if is_empty(value) then
+            value = 0
+        end
+        lethal_damage = tonumber(value)
+        calc_hp(id, value, false)
+    end
 end
 
 -- Helper Functions (these are called by the automatic functions to better segment the code)
