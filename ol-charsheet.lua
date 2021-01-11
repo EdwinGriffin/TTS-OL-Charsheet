@@ -5,17 +5,15 @@
     Event's fired from the XML should just be to update the globals, and then call the relevant update functions, which should read in the globals and make any modifications necessary.
     The save function should be called on all edits as normal.
     On load, globals will need to be populated from the save_data json object, then all update functions run.
-
-]]
+]]--
 
 --Establishing persistence between loads--
 local save_data
 
--- Globals, because ui updates don't function apparently 
+-- Globals, because ui updates don't function apparently --
 local damage = 0
 local lethal_damage = 0
 local other_hp = 0
-
 local cost_to_attr = {[0] = 0, [1] = 1, [3] = 2, [6] = 3, [10] = 4, 
                     [15] = 5, [21] = 6, [28] = 7, [36] = 8, [45] = 9}
 local guard_ids = {'guard_agi', 'guard_mig', 'guard_arm', 'guard_other'}
@@ -32,7 +30,7 @@ local attr_scores = {'agi_score', 'fort_score', 'mig_score',
                     'ler_score', 'log_score', 'perc_score', 'will_score', 
                     'alt_score', 'cre_score', 'ene_score', 'ent_score', 
                     'inf_score', 'mov_score', 'prescience_score', 'pro_score'}
-local attributes = {['agility'] = 0, ['fortitude'] = 0, ['might']}
+local attributes = {['agility'] = 0, ['fortitude'] = 0, ['might'] = 0}
 
 function onSave()
     return JSON.encode(save_data)
@@ -64,8 +62,8 @@ function load_data()
                 if string.find(id, "xp") then
                     xp_changed(_, value, id)
                 elseif string.find(id, "guard") or 
-                string.find(id, "toughness") or
-                string.find(id, "resolve") then
+                        string.find(id, "toughness") or
+                        string.find(id, "resolve") then
                     def_updated(_, value, id)
                 elseif string.find(id, "score") then
                     attr_updated(_, value, id)
@@ -163,7 +161,7 @@ end
 
 -- Automation functions --
 function xp_changed(_, value, id)
-    if value then 
+    if value and not is_empty(value) then 
         value = tonumber(value)
         --Update level
         local level = 0
@@ -184,52 +182,9 @@ function xp_changed(_, value, id)
     end
 end
 
--- Get the total cost values, except for the triggering attribute
-function get_spent(attr_id)
-    local total_costs = 0
-    for i, v in ipairs(attr_costs) do
-        if not string.find(v, attr_id) then
-            total_costs = total_costs + tonumber(get_text(v))
-        end
-    end
-    return total_costs
-end
-
--- Update the defensive scores
--- Update Guard
-function update_guard(attr_id)
-    local guard = 10
-    for i, v in ipairs(guard_ids) do
-        if not string.find(v, attr_id) then
-            guard = guard + tonumber(get_text(v))
-        end
-    end
-    return guard
-end
--- Update Toughness
-function update_toughness(attr_id)
-    local toughness = 10
-    for i, v in ipairs(toughness_ids) do
-        if not string.find(v, attr_id) then
-            toughness = toughness + tonumber(get_text(v))
-        end
-    end
-    return toughness
-end
--- Update Resolve
-function update_resolve(attr_id)
-    local resolve = 10
-    for i, v in ipairs(resolve_ids) do
-        if not string.find(v, attr_id) then
-            resolve = resolve + tonumber(get_text(v))
-        end
-    end
-    return resolve
-end
-
 -- Get values from a change in the defence entries
 function def_updated(_, value, id)
-    if value then
+    if value and not is_empty(value) then
         --Identify the id so you can get the corresponding ids
         local results = {}
         for match in string.gmatch(id, "[^_]+") do
@@ -253,30 +208,10 @@ function def_updated(_, value, id)
     end
 end
 
-function calc_hp(id, value, attr)
-    -- Calculate the attribute contributions
-    local attr_total = 0
-    local max_hp = 0
-    for i, v in ipairs(hp_attrs) do
-        if not string.find(v, id) then
-            attr_total = attr_total + cost_to_attr[tonumber(get_text(v))]
-        end
-    end
-    if attr then
-        max_hp = 10 + 2 * (attr_total + value) + other_hp
-    else
-        max_hp = 10 + 2 * (attr_total) + other_hp
-    end
-    max_hp = max_hp - lethal_damage
-    set_text("hp_max", max_hp)
-    local current_hp = max_hp - damage
-    set_text("hp_current", current_hp)
-end
-
 -- what to do if an attribute is updated
 function attr_updated(_, value, id)
     
-    if value then
+    if value and not is_empty(value) then
         --Identify the id so you can get the corresponding ids
         local results = {}
         for match in string.gmatch(id, "[^_]+") do
@@ -367,4 +302,73 @@ end
 function update_lethal_damage(_, value, id)
     lethal_damage = tonumber(value)
     calc_hp(id, value, false)
+end
+
+-- Helper Functions (these are called by the automatic functions to better segment the code)
+-- Get the total cost values, except for the triggering attribute
+-- Check if a value is empty --
+function is_empty(value)
+    return value == nil or value == ''
+end
+
+function get_spent(attr_id)
+    local total_costs = 0
+    for i, v in ipairs(attr_costs) do
+        if not string.find(v, attr_id) then
+            total_costs = total_costs + tonumber(get_text(v))
+        end
+    end
+    return total_costs
+end
+
+-- Update the defensive scores
+-- Update Guard
+function update_guard(attr_id)
+    local guard = 10
+    for i, v in ipairs(guard_ids) do
+        if not string.find(v, attr_id) then
+            guard = guard + tonumber(get_text(v))
+        end
+    end
+    return guard
+end
+-- Update Toughness
+function update_toughness(attr_id)
+    local toughness = 10
+    for i, v in ipairs(toughness_ids) do
+        if not string.find(v, attr_id) then
+            toughness = toughness + tonumber(get_text(v))
+        end
+    end
+    return toughness
+end
+-- Update Resolve
+function update_resolve(attr_id)
+    local resolve = 10
+    for i, v in ipairs(resolve_ids) do
+        if not string.find(v, attr_id) then
+            resolve = resolve + tonumber(get_text(v))
+        end
+    end
+    return resolve
+end
+
+function calc_hp(id, value, attr)
+    -- Calculate the attribute contributions
+    local attr_total = 0
+    local max_hp = 0
+    for i, v in ipairs(hp_attrs) do
+        if not string.find(v, id) then
+            attr_total = attr_total + cost_to_attr[tonumber(get_text(v))]
+        end
+    end
+    if attr then
+        max_hp = 10 + 2 * (attr_total + value) + other_hp
+    else
+        max_hp = 10 + 2 * (attr_total) + other_hp
+    end
+    max_hp = max_hp - lethal_damage
+    set_text("hp_max", max_hp)
+    local current_hp = max_hp - damage
+    set_text("hp_current", current_hp)
 end
