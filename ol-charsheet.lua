@@ -160,10 +160,12 @@ function reset_sheet()
 end
 
 -- Automation functions --
+-- These are the event handlers for the events fired by the XML
 function xp_changed(_, value, id)
     if value then 
         if is_empty(value) then
             value = 0
+            set_text(id, value)
         end
         value = tonumber(value)
         --Update level
@@ -190,6 +192,7 @@ function def_updated(_, value, id)
     if value then
         if is_empty(value) then
             value = 0
+            set_text(id, value)
         end
         --Identify the id so you can get the corresponding ids
         local results = {}
@@ -220,6 +223,7 @@ function attr_updated(_, value, id)
     if value then
         if is_empty(value) then
             value = 0
+            set_text(id, value)
         end
         --Identify the id so you can get the corresponding ids
         local results = {}
@@ -301,6 +305,7 @@ function update_hp_other(_, value, id)
     if value then
         if is_empty(value) then
             value = 0
+            set_text(id, value)
         end
         other_hp = tonumber(value)
         calc_hp(id, value, false)
@@ -312,6 +317,7 @@ function update_damage(_, value, id)
     if value then
         if is_empty(value) then
             value = 0
+            set_text(id, value)
         end
         damage = tonumber(value)
         calc_hp(id, value, false)
@@ -322,6 +328,7 @@ function update_lethal_damage(_, value, id)
     if value then
         if is_empty(value) then
             value = 0
+            set_text(id, value)
         end
         lethal_damage = tonumber(value)
         calc_hp(id, value, false)
