@@ -55,23 +55,30 @@ function onObjectSpawn(obj)
 end
 
 function load_data()
+    testboi = 0
     for type, values in pairs(save_data) do
         if type == "Text" then
             for id, value in pairs(values) do
                 set_text(id, value)
                 if string.find(id, "xp") then
                     xp_changed(_, value, id)
-                elseif string.find(id, "guard") or 
+                end
+                if string.find(id, "guard") or 
                         string.find(id, "toughness") or
                         string.find(id, "resolve") then
+                    testboi = testboi + 1
                     def_updated(_, value, id)
-                elseif string.find(id, "score") then
+                end
+                if string.find(id, "score") then
                     attr_updated(_, value, id)
-                elseif string.find(id, 'hp') then
+                end
+                if string.find(id, 'hp') then
                     update_hp_other(_, value, id)
-                elseif string.find('dmg', id) then
+                end
+                if string.find('dmg', id) then
                     update_damage(_, value, id)
-                elseif string.find('lethal_damage', id) then
+                end
+                if string.find('lethal_damage', id) then
                     update_lethal_damage(_, value, id)
                 end
             end
@@ -84,6 +91,7 @@ function load_data()
             end
         end
     end
+    set_text("xp", testboi)
 end
 
 --Basic Functions--
@@ -136,6 +144,8 @@ function show(id)
 end
 
 --XML Functions--
+-- These are the event handlers for the events fired by the XML
+
 --InputField--
 function update_field(_, value, id)
 	set_text(id, value)
@@ -159,8 +169,6 @@ function reset_sheet()
 	self.reload()
 end
 
--- Automation functions --
--- These are the event handlers for the events fired by the XML
 function xp_changed(_, value, id)
     if value then 
         if is_empty(value) then
@@ -214,7 +222,12 @@ function def_updated(_, value, id)
             set_text("resolve_" .. attr_id, value)
             set_text("resolve", new_resolve)
         end
+        set_text('player', match)
+        set_text('description', attr_id)
     end
+    set_text('char_name', id)
+    set_text('archetype', value)
+    
 end
 
 -- what to do if an attribute is updated
