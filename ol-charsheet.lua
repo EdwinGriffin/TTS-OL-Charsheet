@@ -5,6 +5,8 @@
     Event's fired from the XML should just be to update the globals, and then call the relevant update functions, which should read in the globals and make any modifications necessary.
     The save function should be called on all edits as normal.
     On load, globals will need to be populated from the save_data json object, then all update functions run.
+
+    This is all because the OnLoad function does not update the script during the runtime of the function, it updates after the function has completed. As such any calls to the values on the page will reference the default values rather than the saved ones.
 ]]--
 
 --Establishing persistence between loads--
@@ -55,7 +57,6 @@ function onObjectSpawn(obj)
 end
 
 function load_data()
-    testboi = 0
     for type, values in pairs(save_data) do
         if type == "Text" then
             for id, value in pairs(values) do
@@ -66,7 +67,6 @@ function load_data()
                 if string.find(id, "guard") or 
                         string.find(id, "toughness") or
                         string.find(id, "resolve") then
-                    testboi = testboi + 1
                     def_updated(_, value, id)
                 end
                 if string.find(id, "score") then
@@ -91,7 +91,6 @@ function load_data()
             end
         end
     end
-    set_text("xp", testboi)
 end
 
 --Basic Functions--
@@ -156,6 +155,33 @@ end
 function update_lock(_, value, id)
     set_attr("Lock", "raycastTarget", value)
     save_toggle(id, value)
+    for type, values in pairs(save_data) do
+        if type == "Text" then
+            for id, value in pairs(values) do
+                set_text(id, value)
+                if string.find(id, "xp") then
+                    xp_changed(_, value, id)
+                end
+                if string.find(id, "guard") or 
+                        string.find(id, "toughness") or
+                        string.find(id, "resolve") then
+                    def_updated(_, value, id)
+                end
+                if string.find(id, "score") then
+                    attr_updated(_, value, id)
+                end
+                if string.find(id, 'hp') then
+                    update_hp_other(_, value, id)
+                end
+                if string.find('dmg', id) then
+                    update_damage(_, value, id)
+                end
+                if string.find('lethal_damage', id) then
+                    update_lethal_damage(_, value, id)
+                end
+            end
+        end
+    end
 end
 
 --Reset--
@@ -222,12 +248,7 @@ function def_updated(_, value, id)
             set_text("resolve_" .. attr_id, value)
             set_text("resolve", new_resolve)
         end
-        set_text('player', match)
-        set_text('description', attr_id)
-    end
-    set_text('char_name', id)
-    set_text('archetype', value)
-    
+    end    
 end
 
 -- what to do if an attribute is updated
